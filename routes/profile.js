@@ -6,7 +6,22 @@ const methodOverride = require('method-override');
 
 router.use(methodOverride('_method'));
 //Get "/"
-router.get()
+router.get("/:user", (req,res)=> {
+//     let userId = req.params.id
+//     //db call for user's meetings
+//     db.user.findOne({
+//             where:{
+//                 id: userId
+//         }, include: [db.meeting]
+//     }
+//     ).then(user=>{
+//         //console.log(user)
+//     res.render("user/index",{user:user})
+//     })
+
+})
+
+
 //Post "/meeting/new"
 router.post()
 //Get "/meeting/:id"
