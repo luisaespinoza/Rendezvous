@@ -1,1 +1,37 @@
-<h1>User Meetings List Page</h1>
+<h1>Your Meetings
+</h1>
+
+<table class="ui sortable celled table">
+
+    <%users.forEach(user => { %>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>John</td>
+                <td>No Action</td>
+                <td>None</td>
+              </tr>
+              <tr>
+                <td>Jamie</td>
+                <td class="positive">Approved</td>
+                <td class="warning">Requires call</td>
+              </tr>
+              <tr>
+                <td>Jill</td>
+                <td class="negative">Denied</td>
+                <td>None</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr><th>3 People</th>
+              <th>2 Approved</th>
+              <th></th>
+            </tr></tfoot>
+    }); %> 
+</table>
