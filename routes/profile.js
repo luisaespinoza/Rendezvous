@@ -34,6 +34,7 @@ router.post("/meeting/new", (req,res) => {
   //   recurring: req.body.recurring,
   //   passcode: req.body.passcode,
   //   notes: req.body.notes,
+  //   provider: req.body.provider,
   // })
   // .then((meeting) => {
   //   db.category.findOne({
