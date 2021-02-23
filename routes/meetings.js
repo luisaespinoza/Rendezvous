@@ -3,11 +3,15 @@ const router = express.Router();
 const passport = require('../config/ppConfig')
 const db = require("../models")
 const methodOverride = require('method-override');
+const isLoggedIn = require('../middleware/isLoggedIn');
 
 router.use(methodOverride('_method'));
 //Get "/"
-router.get("/:user", (req,res)=> {
-//     let userId = req.params.id
+
+
+router.get("/", isLoggedIn, (req, res) => {
+//     let userId = req.session.passport.user;
+
 //     //db call for user's meetings
 //     db.user.findOne({
 //             where:{
@@ -18,7 +22,7 @@ router.get("/:user", (req,res)=> {
 //         //console.log(user)
 //     res.render("user/index",{user:user})
 //     })
-
+  res.render("user/index")
 })
 
 
