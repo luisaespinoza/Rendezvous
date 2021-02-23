@@ -35,6 +35,24 @@ router.post("/", (req,res) => {
     passcode: req.body.passcode,
     notes: req.body.notes,
   })
+  .then((meeting) => {
+    db.category.findOne({
+      where: {
+        name: req.body.category,
+      }
+    }).then((category) => {
+      db.meetingsCategories.create({
+        categoryId: category.id,
+        meetingId: meeting.id,
+      }).then((created) => {
+        res.redirect("/")
+      })
+    })
+  })
+  .catch((error) => {
+    console.log(error)
+    res.render(error)
+  })
 })
 //Get "/meeting/:id"
 router.get()
