@@ -23,7 +23,7 @@ router.get("/:user", (req,res)=> {
 
 
 //Post "/meeting/new"
-router.post("/", (req,res) => {
+router.post("/meeting/new", (req,res) => {
   // db.meeting.create({
   //   user: req.body.user,
   //   url: req.body.url,
