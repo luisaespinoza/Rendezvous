@@ -13,7 +13,6 @@ module.exports = (sequelize, DataTypes) => {
        models.category.belongsToMany(models.meeting, 
         { through: 'meetingsCategories' });
     }
-    }
   };
   category.init({
     name: DataTypes.STRING
