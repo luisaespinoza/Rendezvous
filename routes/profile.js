@@ -23,19 +23,38 @@ router.get("/:user", (req,res)=> {
 
 
 //Post "/meeting/new"
-// router.post("/", (req,res) => {
-//   db.meeting.create({
-//     user: req.body.user,
-//     url: req.body.url,
-//     dateTime: req.body.dateTime,
-//     // private is a boolean value
-//     private: req.body.private,
-//     // daily, weekly, or monthly
-//     recurring: req.body.recurring,
-//     passcode: req.body.passcode,
-//     notes: req.body.notes,
-//   })
-// })
+router.post("/meeting/new", (req,res) => {
+  // db.meeting.create({
+  //   user: req.body.user,
+  //   url: req.body.url,
+  //   dateTime: req.body.dateTime,
+  //   // private is a boolean value
+  //   private: req.body.private,
+  //   // daily, weekly, or monthly
+  //   recurring: req.body.recurring,
+  //   passcode: req.body.passcode,
+  //   notes: req.body.notes,
+  // })
+  // .then((meeting) => {
+  //   db.category.findOne({
+  //     where: {
+  //       name: req.body.category,
+  //     }
+  //   }).then((category) => {
+  //     db.meetingsCategories.create({
+  //       categoryId: category.id,
+  //       meetingId: meeting.id,
+  //     }).then((created) => {
+  //       res.redirect("/")
+  //     })
+  //   })
+  // })
+  // .catch((error) => {
+  //   console.log(error)
+  //   res.render(error)
+  // })
+})
+
 //Get "/meeting/:id"
 // router.get()
 // //Put "/meeting/:id/edit"
