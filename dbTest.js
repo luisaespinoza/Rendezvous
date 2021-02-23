@@ -49,6 +49,7 @@ const db = require("./models");
 //   console.log(created)
 // })
 
+//check pgadmin for ids
 
 // db.category.findOne({where: {id: 5}}).then(foundCategory => {
 //   db.meeting.findOne({ where: { id: 1 } }).then(foundMeeting => {
