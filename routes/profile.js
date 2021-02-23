@@ -7,17 +7,17 @@ const methodOverride = require('method-override');
 router.use(methodOverride('_method'));
 //Get "/"
 router.get("/:user", (req,res)=> {
-//     let userId = req.params.id
-//     //db call for user's meetings
-//     db.user.findOne({
-//             where:{
-//                 id: userId
-//         }, include: [db.meeting]
-//     }
-//     ).then(user=>{
-//         //console.log(user)
-//     res.render("user/index",{user:user})
-//     })
+    let userId = req.params.id
+    //db call for user's meetings
+    db.user.findOne({
+            where:{
+                id: userId
+        }, include: [db.meeting]
+    }
+    ).then(user=>{
+        console.log(user)
+    res.render("user/index",{user:user})
+    })
 
 })
 
