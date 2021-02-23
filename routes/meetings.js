@@ -1,24 +1,24 @@
 const express = require('express');
 const router = express.Router();
-const passport = require('../config/ppConfig')
 const db = require("../models")
-const methodOverride = require('method-override');
+const isLoggedIn = require('../middleware/isLoggedIn');
 
-router.use(methodOverride('_method'));
+
 //Get "/"
-router.get("/:user", (req,res)=> {
-    let userId = req.params.id
-    //db call for user's meetings
-    db.user.findOne({
-            where:{
-                id: userId
-        }, include: [db.meeting]
-    }
-    ).then(user=>{
-        console.log(user)
-    res.render("user/index",{user:user})
-    })
+router.get("/", isLoggedIn, (req, res) => {
+//     let userId = req.session.passport.user;
 
+//     //db call for user's meetings
+//     db.user.findOne({
+//             where:{
+//                 id: userId
+//         }, include: [db.meeting]
+//     }
+//     ).then(user=>{
+//         //console.log(user)
+//     res.render("user/index",{user:user})
+//     })
+  res.render("user/index")
 })
 
 
@@ -34,6 +34,7 @@ router.post("/meeting/new", (req,res) => {
   //   recurring: req.body.recurring,
   //   passcode: req.body.passcode,
   //   notes: req.body.notes,
+  //   provider: req.body.provider,
   // })
   // .then((meeting) => {
   //   db.category.findOne({
