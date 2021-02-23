@@ -1,14 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const passport = require('../config/ppConfig')
 const db = require("../models")
-const methodOverride = require('method-override');
 const isLoggedIn = require('../middleware/isLoggedIn');
 
-router.use(methodOverride('_method'));
+
 //Get "/"
-
-
 router.get("/", isLoggedIn, (req, res) => {
 //     let userId = req.session.passport.user;
 
