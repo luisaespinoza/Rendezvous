@@ -6,19 +6,19 @@ const isLoggedIn = require('../middleware/isLoggedIn');
 
 //Get "/"
 router.get("/", isLoggedIn, (req, res) => {
-//     let userId = req.session.passport.user;
-
-//     //db call for user's meetings
-//     db.user.findOne({
-//             where:{
-//                 id: userId
-//         }, include: [db.meeting]
-//     }
-//     ).then(user=>{
-//         //console.log(user)
-//     res.render("user/index",{user:user})
-//     })
-  res.render("user/index")
+    let userId = req.session.passport.user;
+console.log(userId)
+    //db call for user's meetings
+    // db.user.findOne({
+    //         where:{
+    //             id: userId
+    //     }, include: [db.meeting]
+    // }
+    // ).then(user=>{
+    //     //console.log(user)
+    // res.render("user/index",{user:user})
+    // })
+  res.render("meetings/index")
 })
 
 
