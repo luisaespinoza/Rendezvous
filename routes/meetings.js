@@ -19,7 +19,7 @@ router.get('/index', isLoggedIn, (req, res) => {
         }, include: [db.category]
       })
         .then(foundMeetings => {
-          res.render('user/index', { user: user, meetings: foundMeetings })
+          res.render('meetings/index', { user: user, meetings: foundMeetings })
         })
     })
 })
