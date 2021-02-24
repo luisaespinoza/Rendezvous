@@ -42,7 +42,7 @@ router.post('/new', isLoggedIn, (req,res) => {
 })
 
 //Get "/meeting/:id"
-router.get('/:id', (req, res) => {
+router.get('/:id', isLoggedIn, (req, res) => {
   db.meeting.findOne({ where: { 
     id: req.params.id 
     }, include: [db.category]
@@ -52,7 +52,7 @@ router.get('/:id', (req, res) => {
 })
 
 // //Put "/meeting/:id/edit"
-router.put('/:id/edit', (req, res) => {
+router.put('/:id/edit', isLoggedIn, (req, res) => {
   db.meeting.findOne({ where: 
     { id: req.params.id },
     include: [db.meeting]
@@ -81,7 +81,7 @@ router.put('/:id/edit', (req, res) => {
 })
 
 // //Delete "/meeting/:id"
-router.delete('/:id/delete', (req, res) => {
+router.delete('/:id/delete', isLoggedIn, (req, res) => {
   db.meetingsCategories.destroy({ where: { meetingId: req.params.id }
   }).then(() => {
     db.meeting.destroy({where: {id: req.params.id}})
