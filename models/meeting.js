@@ -10,7 +10,6 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      models.meeting.hasOne(models.user)
       models.meeting.belongsToMany(models.category, 
         { through: 'meetingsCategories' });
     }
