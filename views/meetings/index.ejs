@@ -12,6 +12,8 @@
       <th>Passcode</th>
       <th>Notes</th>
       <th>URL</th>
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -39,6 +41,9 @@
           <a href="<%=meeting.dataValues.url%>" target="_blank">
             <%= meeting.dataValues.url%>
           </a>
+        </td>
+        <td>
+          <%-include("../partials/edit", {meeting:meeting}) %>
         </td>
       </tr>
       <% }); %>

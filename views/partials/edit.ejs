@@ -1,0 +1,73 @@
+<div class="ui header center aligned">Edit Meeting</div>
+<div class="ui text container">
+  <form method="PUT"action="/meetings/[meeting:id]/?_method=PUT" class="ui form">  
+    
+    <div class="field">
+      <label for="provider">Provider</label>
+      <select class="ui selection dropdown" name="provider" id="provider">
+        <option value="zoom">Zoom</option>
+        <option value="hangouts">Google Hangouts</option>
+        <option value="skype">Skype</option>
+        <option value="webex">Cisco Webex</option>
+        <option value="joinme">Join.me</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="url">Url</label>
+      <input type="url" id="url" name="url" required>
+    </div>
+
+    <div class="ui clearable multiple selection dropdown">
+      <input type="hidden" name="category" id="category">
+      <i class="dropdown icon"></i>
+      <div class="default text">Select Category</div>
+      <div class="menu">
+        <div class="item">School</div>
+        <div class="item">Work</div>
+        <div class="item">Fun</div>
+        <div class="item">Social</div>
+        <div class="item">Gaming</div>
+        <div class="item">Interview</div>
+      </div>
+    </div>
+
+    <div class="ui calendar" id="standard_calendar">
+      <div class="ui input left icon">
+        <i class="calendar icon"></i>
+        <input type="text" placeholder="Date/Time" id="dateTime">
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="ui checkbox">
+        <input type="checkbox" id="private" name="private">
+        <label for="private">Private</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="recurring">Recurring</label>
+      <select class="ui selection dropdown" name="recurring" id="recurring">
+        <option value=null>Not Recurring</option>
+        <option value="daily">Daily</option>
+        <option value="weekly">Weekly</option>
+        <option value="biweekly">Biweekly</option>
+        <option value="monthly">Mohthly</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="passcode">Passcode</label>
+      <input type="text" id="passcode" name="passcode" required>
+    </div>
+
+    <div class="field">
+      <label for="notes">Notes</label>
+      <input type="text" id="notes" name="notes" required>
+    </div>
+
+    <button class="ui button" type="submit">Submit</button>
+    
+  </form>
+</div>
