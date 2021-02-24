@@ -1,17 +1,17 @@
 const db = require("./models");
 
 
-// db.user.create({
-//     email: "jack@jack.jack",
-//     name: "jack",
-//     password: "jackjack",
-// }).then(createdUser=>{
-//     console.log(createdUser)
-// // })
+db.user.create({
+    email: "jack@jack.jack",
+    name: "jack",
+    password: "jackjack",
+}).then(createdUser=>{
+    console.log(createdUser)
+// })
 
 // db.user.findOne({
 //   where:
-//     { id: 1 }, include: [db.meeting]
+//     { id: 1 },
 // }).then(foundUser => {
 // foundUser.createMeeting({
 
@@ -23,10 +23,11 @@ const db = require("./models");
 //     notes: "BYOBacon",
 //     provider: "zoom"
 //   }).then(createdMeeting => {
-//     console.log(createdMeeting)
-//     console.log(foundUser,"+++++++++++++++++++++++++++++++++++")
-//     console.log(foundUser.meetings)
+//     db.category.findOrCreate({
+//         where: { name: 'work' }
+//       }).then((category) => { createdMeeting.addCategory(category[0].id)
 //   })
+// })
 // })
 
 // db.meeting.findOne({where:{id:1}}).then(foundMeeting=>{
