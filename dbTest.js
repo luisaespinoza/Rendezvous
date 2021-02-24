@@ -1,12 +1,12 @@
 const db = require("./models");
 
 
-db.user.create({
-    email: "jack@jack.jack",
-    name: "jack",
-    password: "jackjack",
-}).then(createdUser=>{
-    console.log(createdUser)
+// db.user.create({
+//     email: "jack@jack.jack",
+//     name: "jack",
+//     password: "jackjack",
+// }).then(createdUser=>{
+//     console.log(createdUser)
 // })
 
 // db.user.findOne({
@@ -67,3 +67,21 @@ db.user.create({
 //     })
 //   })
 // })
+
+
+// db.meeting.findOne({where:{id:1}}).then(foundMeeting=>{
+//     db.category.findOne({where:{id:1}}).then(foundCategory=>{
+//         db.user.findOne({where:{id:1}}).then(foundUser=>{
+//             foundMeeting.addCategory(foundCategory).then(relation=>{
+//                 foundUser.addMeeting(foundMeeting).then(rel=>{
+//                     console.log("winning")
+//                 })
+//             })
+
+//         })
+//     })
+// })
+
+db.user.findOne({where:{id:1},include: [db.meeting]}).then(foundUser=>{
+    console.log(foundUser,"++++++",foundUser.meetings)
+})
