@@ -44,7 +44,16 @@ router.post('/new', isLoggedIn, (req,res) => {
 })
 
 //Get "/meeting/:id"
-// router.get()
+router.get('/:id', (req, res) => {
+  db.meeting.findOne({ where: { 
+    id: req.params.id 
+    }, include: [db.category]
+  }).then(meeting => {
+    res.render('meetings/show', { meeting })
+  })
+})
+
+
 // //Put "/meeting/:id/edit"
 // router.put()
 // //Delete "/meeting/:id"
