@@ -5,3 +5,7 @@
 #newMeetingFormDiv label {
   font-size: 11pt;
 }
+
+#yourMeetingsDiv {
+  padding: 2.5% 5%;
+}
