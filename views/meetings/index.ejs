@@ -17,13 +17,29 @@
   <tbody>
     <%meetings.forEach(meeting=> { %>
       <tr>
-        <td><%= meeting.dataValues.provider %> </td>
-        <td><%= meeting.dataValues.dateTime %></td>
-        <td><%= meeting.dataValues.recurring %></td>
-        <td><%= meeting.dataValues.private %> </td>
-        <td><%= meeting.dataValues.passcode %></td>
-        <td><%= meeting.dataValues.notes %></td>
-        <td><%= meeting.dataValues.url%></td>
+        <td>
+          <%= meeting.dataValues.provider %>
+        </td>
+        <td>
+          <%= meeting.dataValues.dateTime %>
+        </td>
+        <td>
+          <%= meeting.dataValues.recurring %>
+        </td>
+        <td>
+          <%= meeting.dataValues.private %>
+        </td>
+        <td>
+          <%= meeting.dataValues.passcode %>
+        </td>
+        <td>
+          <%= meeting.dataValues.notes %>
+        </td>
+        <td>
+          <a href="%= meeting.dataValues.url%>">
+            <%= meeting.dataValues.url%>
+          </a>
+        </td>
       </tr>
       <% }); %>
   </tbody>
