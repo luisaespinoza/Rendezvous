@@ -8,9 +8,10 @@
           <li><a href="/auth/logout">Logout</a></li>
           <li><a href="/profile">Profile</a></li>
           <li><a href="/meetings/index">Meetings</a></li>
-          <li><a href="/meetings/new">New Meeting</a></li>
+          <li><a href="#" id="newMeeting">New Meeting</a></li>
           <% } %>
-       
     </ul>
   </nav>
 </header>
+
+<div class="ui modal"><%-include("./new")%></div>
