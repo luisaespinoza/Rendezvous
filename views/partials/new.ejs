@@ -1,5 +1,5 @@
-<div class="header">Create a New Meeting</div>
-<div class="ui container">
+<div class="ui header center aligned">Create a New Meeting</div>
+<div class="ui text container">
   <form method="POST"action="/meeting/new" class="ui form">  
     
     <div class="field">
@@ -17,6 +17,20 @@
       <label for="url">Url</label>
       <input type="url" id="url" name="url" required>
     </div>
+
+    <!-- <div class="ui clearable multiple selection dropdown">
+      <input type="hidden" name="Category" id="category">
+      <i class="dropdown icon"></i>
+      <div class="default text">Select Category</div>
+      <div class="menu">
+        <div class="item">School</option>
+        <div class="item">Work</option>
+        <div class="item">Fun</option>
+        <div class="item">Social</option>
+        <div class="item">Gaming</option>
+        <div class="item">Interview</option>
+      </div>
+    </div> -->
 
     <div class="ui calendar" id="standard_calendar">
       <div class="ui input left icon">
@@ -51,19 +65,6 @@
     <div class="field">
       <label for="notes">Notes</label>
       <input type="text" id="notes" name="notes" required>
-    </div>
-
-    <div class="field">
-      <label for="category">Categories</label>
-      <select multiple="" class="ui fluid dropdown" name="category" id="category">
-        <option value="">Please select one or more</option>
-        <option value="work">Work</option>
-        <option value="school">School</option>
-        <option value="fun">Fun</option>
-        <option value="social">Social</option>
-        <option value="gaming">Gaming</option>
-        <option value="interview">Interview</option>
-      </select>
     </div>
 
     <button class="ui button" type="submit">Submit</button>
