@@ -8,9 +8,11 @@ const isLoggedIn = require('../middleware/isLoggedIn');
 router.get('/', isLoggedIn, (req, res) => {
   let userId = req.session.passport.user;
   
-  db.user.findOne({ where: { id: 1 }, include: [db.meeting] })
+  db.user.findOne({ where: { 
+    id: userId 
+  }, include: [db.meeting] })
   .then(user => {
-    res.render('user/index', { user })
+    res.render('user/index', { meetings: user.meetings })
   })
 })
 
@@ -33,7 +35,7 @@ router.post('/new', isLoggedIn, (req,res) => {
         where: { name: req.body.category }
         }).then((category) => { 
           createdMeeting.addCategory(category[0].id) 
-        }).then( res.redirect('/'))
+        }).then(res.redirect('/'))
       })
     }).catch((error) => {
     console.log(error)
