@@ -2,8 +2,38 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
+
+    const bulkUsers = await queryInterface.bulkInsert('users', [{
+      email: 'user@example1.com',
+      name: 'User1',
+      password: 'password1',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      email: 'user@example2.com',
+      name: 'User2',
+      password: 'password2',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      email: 'user@example3.com',
+      name: 'User3',
+      password: 'password3',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      email: 'user@example4.com',
+      name: 'User4',
+      password: 'password4',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }], {returning: true});
+
     const bulkMeetings = await queryInterface.bulkInsert('meetings', [{
-      userId: 1,
+      userId: bulkUsers[0].id,
       url: "https://www.apple.com/",
       dateTime: new Date(),
       private: false,
@@ -15,7 +45,7 @@ module.exports = {
       updatedAt: new Date()
     },
     {
-      userId: 2,
+      userId: bulkUsers[0].id,
       url: "https://www.microsoft.com/",
       dateTime: new Date(),
       private: false,
@@ -27,7 +57,7 @@ module.exports = {
       updatedAt: new Date()
     },
     {
-      userId: 3,
+      userId: bulkUsers[2].id,
       url: "https://www.google.com/",
       dateTime: new Date(),
       private: false,
@@ -39,7 +69,7 @@ module.exports = {
       updatedAt: new Date()
     },
     {
-      userId: 4,
+      userId: bulkUsers[3].id,
       url: "https://www.epson.com/",
       dateTime: new Date(),
       private: false,
@@ -78,7 +108,7 @@ module.exports = {
       updatedAt: new Date()
     }],  { returning: true });
 
-    console.log(bulkCategories)
+   
     const bulkMeetingsCategories = await queryInterface.bulkInsert('meetingsCategories', [{
       meetingId: bulkMeetings[0].id,
       categoryId: bulkCategories[0].id,
@@ -111,8 +141,6 @@ module.exports = {
       updatedAt: new Date()
     }], { returning: true });
   },
-
-  
 
   down: async (queryInterface, Sequelize) => {
     await queryInterface.bulkDelete('meetings', null, {truncate: true, cascade: true, restartIdentity: true})
