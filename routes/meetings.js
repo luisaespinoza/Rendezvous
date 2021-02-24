@@ -5,23 +5,18 @@ const isLoggedIn = require('../middleware/isLoggedIn');
 
 
 //Get "/"
-router.get('/index'
-, isLoggedIn
-, (req, res) => {
+router.get('/index', isLoggedIn, (req, res) => {
   let userId = req.session.passport.user;
-  // console.log(userId)
-  // console.log("===============================================",req)
 
   db.user.findOne({ where: { 
     id: userId 
   }, include: [db.meeting] })
   .then(user => {
-
     db.meeting.findAll({where:{
       userId: userId
     }, include: [db.category]
-  }).then(foundMeetings=>{
-    console.log(foundMeetings,"\n++++++++++++++++++++++++++++++++++++++++++++++++++++++",user)
+  })
+  .then(foundMeetings=>{
     res.render('user/index', { user: user, meetings: foundMeetings })
     })
   })
