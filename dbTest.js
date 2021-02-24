@@ -9,25 +9,26 @@ const db = require("./models");
 //     console.log(createdUser)
 // // })
 
-// db.user.findOne({
-//   where:
-//     { id: 1 }, include: [db.meeting]
-// }).then(foundUser => {
-// foundUser.createMeeting({
+db.user.findOne({
+  where:
+    { id: 1 },
+}).then(foundUser => {
+foundUser.createMeeting({
 
-//     url: "https://www.google.com/",
-//     dateTime: new Date(),
-//     private: false,
-//     recurring: "weekly",
-//     passcode: null,
-//     notes: "BYOBacon",
-//     provider: "zoom"
-//   }).then(createdMeeting => {
-//     console.log(createdMeeting)
-//     console.log(foundUser,"+++++++++++++++++++++++++++++++++++")
-//     console.log(foundUser.meetings)
-//   })
-// })
+    url: "https://www.google.com/",
+    dateTime: new Date(),
+    private: false,
+    recurring: "weekly",
+    passcode: null,
+    notes: "BYOBacon",
+    provider: "zoom"
+  }).then(createdMeeting => {
+    db.category.findOrCreate({
+        where: { name: 'work' }
+      }).then((category) => { createdMeeting.addCategory(category[0].id)
+  })
+})
+})
 
 // db.meeting.findOne({where:{id:1}}).then(foundMeeting=>{
 //   foundMeeting.createCategory({
