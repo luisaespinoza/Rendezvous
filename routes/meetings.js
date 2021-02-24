@@ -26,16 +26,10 @@ router.get('/index', isLoggedIn, (req, res) => {
 
 //Post "/meeting/new"
 router.post('/new', isLoggedIn, (req, res) => {
-
-  console.log("++++++++I am posting")
   db.user.findOne({
     where: { id: req.session.passport.user },
   }).then(user => {
-
-
     user.createMeeting({
-
-
       url: req.body.url,
       dateTime: req.body.dateTime,
       private: req.body.private,
@@ -44,14 +38,9 @@ router.post('/new', isLoggedIn, (req, res) => {
       notes: req.body.notes,
       provider: req.body.provider
     }).then(createdMeeting => {
-      console.log("2222222222222222222222",req.body.category)
-
-
       db.category.findOrCreate({
         where: { name: req.body.category }
       }).then((category) => {
-
-        console.log("33333333333333333333333",category)
         createdMeeting.addCategory(category[0].id)
       }).then(res.redirect('/'))
     })
