@@ -3,8 +3,8 @@
 
 <table class="ui sortable celled table">
 
-    <%users.forEach(user => { %>
-            <thead>
+  <thead>
+              <%meetings.forEach(meeting => { %>
               <tr>
                 <th>Name</th>
                 <th>Status</th>
@@ -31,7 +31,7 @@
             <tfoot>
               <tr><th>3 People</th>
               <th>2 Approved</th>
+         <%   }); %> 
               <th></th>
             </tr></tfoot>
-    }); %> 
 </table>

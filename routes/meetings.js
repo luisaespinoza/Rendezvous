@@ -8,23 +8,26 @@ const isLoggedIn = require('../middleware/isLoggedIn');
 router.get('/index', isLoggedIn, (req, res) => {
   let userId = req.session.passport.user;
 
-  db.user.findOne({ where: { 
-    id: userId 
-  }, include: [db.meeting] })
-  .then(user => {
-    db.meeting.findAll({where:{
-      userId: userId
-    }, include: [db.category]
+  db.user.findOne({
+    where: {
+      id: userId
+    }, include: [db.meeting]
   })
-  .then(foundMeetings=>{
-    res.render('user/index', { user: user, meetings: foundMeetings })
+    .then(user => {
+      db.meeting.findAll({
+        where: {
+          userId: userId
+        }, include: [db.category]
+      })
+        .then(foundMeetings => {
+          res.render('user/index', { user: user, meetings: foundMeetings })
+        })
     })
-  })
 })
 
 
 //Post "/meeting/new"
-router.post('/new', isLoggedIn, (req,res) => {
+router.post('/new', isLoggedIn, (req, res) => {
   db.user.findOne({
     where: { id: req.session.passport.user },
   }).then(user => {
@@ -39,11 +42,11 @@ router.post('/new', isLoggedIn, (req,res) => {
     }).then(createdMeeting => {
       db.category.findOrCreate({
         where: { name: req.body.category }
-        }).then((category) => { 
-          createdMeeting.addCategory(category[0].id) 
-        }).then(res.redirect('/'))
-      })
-    }).catch((error) => {
+      }).then((category) => {
+        createdMeeting.addCategory(category[0].id)
+      }).then(res.redirect('/'))
+    })
+  }).catch((error) => {
     console.log(error)
     res.render(error)
   })
