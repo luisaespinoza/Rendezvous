@@ -78,37 +78,38 @@ module.exports = {
       updatedAt: new Date()
     }],  { returning: true });
 
-    // const bulkMeetingsCategories = await queryInterface.bulkInsert('meetingsCategories', [{
-    //   meetingId: bulkMeetings[0].id,
-    //   categoryId: bulkCategories[0].id,
-    //   createdAt: new Date(),
-    //   updatedAt: new Date()
-    // },{
-    //   meetingId: bulkMeetings[1].id,
-    //   categoryId: bulkCategories[2].id,
-    //   createdAt: new Date(),
-    //   updatedAt: new Date()
-    // },{
-    //   meetingId: bulkMeetings[1].id,
-    //   categoryId: bulkCategories[1].id,
-    //   createdAt: new Date(),
-    //   updatedAt: new Date()
-    // },{
-    //   meetingId: bulkMeetings[2].id,
-    //   categoryId: bulkCategories[3].id,
-    //   createdAt: new Date(),
-    //   updatedAt: new Date()
-    // },{
-    //   meetingId: bulkMeetings[3].id,
-    //   categoryId: bulkCategories[3].id,
-    //   createdAt: new Date(),
-    //   updatedAt: new Date()
-    // },{
-    //   meetingId: bulkMeetings[4].id,
-    //   categoryId: bulkCategories[4].id,
-    //   createdAt: new Date(),
-    //   updatedAt: new Date()
-    // }], { returning: true });
+    console.log(bulkCategories)
+    const bulkMeetingsCategories = await queryInterface.bulkInsert('meetingsCategories', [{
+      meetingId: bulkMeetings[0].id,
+      categoryId: bulkCategories[0].id,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },{
+      meetingId: bulkMeetings[1].id,
+      categoryId: bulkCategories[2].id,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },{
+      meetingId: bulkMeetings[1].id,
+      categoryId: bulkCategories[1].id,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },{
+      meetingId: bulkMeetings[2].id,
+      categoryId: bulkCategories[3].id,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },{
+      meetingId: bulkMeetings[3].id,
+      categoryId: bulkCategories[3].id,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },{
+      meetingId: bulkMeetings[3].id,
+      categoryId: bulkCategories[4].id,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }], { returning: true });
   },
 
   
@@ -116,7 +117,7 @@ module.exports = {
   down: async (queryInterface, Sequelize) => {
     await queryInterface.bulkDelete('meetings', null, {truncate: true, cascade: true, restartIdentity: true})
     await queryInterface.bulkDelete('categories', null, {truncate: true, cascade: true, restartIdentity: true});
-    // await queryInterface.bulkDelete('meetingsCategories', null, {truncate: true, cascade: true, restartIdentity: true});
-    // await queryInterface.bulkDelete('users', null, {truncate: true, cascade: true, restartIdentity: true});
+    await queryInterface.bulkDelete('meetingsCategories', null, {truncate: true, cascade: true, restartIdentity: true});
+    await queryInterface.bulkDelete('users', null, {truncate: true, cascade: true, restartIdentity: true});
   }
 };
