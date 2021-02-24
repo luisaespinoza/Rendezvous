@@ -67,3 +67,12 @@ db.user.create({
 //     })
 //   })
 // })
+
+
+db.meeting.findOne({where:{id:1}}).then(foundMeeting=>{
+    foundMeeting.addCategory({id:1}).then(relation=>{
+        foundMeeting.addUser({id:1}).then(rel=>{
+            console.log("winning")
+        })
+    })
+})

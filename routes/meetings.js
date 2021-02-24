@@ -5,21 +5,6 @@ const isLoggedIn = require('../middleware/isLoggedIn');
 
 
 //Get "/"
-<<<<<<< HEAD
-router.get("/", isLoggedIn, (req, res) => {
-    let userId = req.session.passport.user;
-// console.log(userId)
-    // db call for user's meetings
-    db.user.findOne({
-            where:{
-                id: 1
-        }, include: [db.meeting]
-    }).then(user=>{
-        console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++",user)
-    res.render("user/index",{user:user})
-    })
-  res.render("meetings/index")
-=======
 router.get('/', isLoggedIn, (req, res) => {
   let userId = req.session.passport.user;
   
@@ -27,9 +12,15 @@ router.get('/', isLoggedIn, (req, res) => {
     id: userId 
   }, include: [db.meeting] })
   .then(user => {
-    res.render('user/index', { meetings: user.meetings })
+
+    db.meeting.findAll({where:{
+      userId: userId
+    }, include: [db.category]
+  }).then(foundMeetings=>{
+    console.log(foundMeetings,"\n++++++++++++++++++++++++++++++++++++++++++++++++++++++\n",user)
+    res.render('user/index', { user: user, meetings: foundMeetings })
+    })
   })
->>>>>>> submain
 })
 
 
