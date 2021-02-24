@@ -1,39 +1,70 @@
 <h2>Create a New Meeting</h2>
-<form method=""action="/profile/meeting/new">
-  <div>
+<form method="POST"action="/profile/meeting/new" class="ui form">
+  
+  <div class="field">
     <label for="provider">Provider</label>
-    <!-- <select> WIP -->
-    <select name="" id=""></select>
+    <select class="ui selection dropdown" name="provider" id="provider">
+      <option value="zoom">Zoom</option>
+      <option value="hangouts">Google Hangouts</option>
+      <option value="skype">Skype</option>
+      <option value="webex">Cisco Webex</option>
+      <option value="joinme">Join.me</option>
+    </select>
   </div>
-  <div>
+
+  <div class="field">
     <label for="url">Url</label>
     <input type="url" id="url" name="url" required>
   </div>
+
   <div class="ui calendar" id="standard_calendar">
     <div class="ui input left icon">
       <i class="calendar icon"></i>
       <input type="text" placeholder="Date/Time" id="dateTime">
     </div>
   </div>
-  <div>
-    <label for="private">Private</label>
-    <input type="checkbox" id="private" name="private">
+
+  <div class="field">
+    <div class="ui checkbox">
+      <input type="checkbox" id="private" name="private">
+      <label for="private">Private</label>
+    </div>
   </div>
-  <div>
+
+  <div class="field">
     <label for="recurring">Recurring</label>
-    <!-- <select> WIP -->
-    <select name="" id=""></select>
+    <select class="ui selection dropdown" name="recurring" id="recurring">
+      <option value=null>Not Recurring</option>
+      <option value="daily">Daily</option>
+      <option value="weekly">Weekly</option>
+      <option value="biweekly">Biweekly</option>
+      <option value="monthly">Mohthly</option>
+    </select>
   </div>
-  <div>
+
+  <div class="field">
     <label for="passcode">Passcode</label>
     <input type="text" id="passcode" name="passcode" required>
   </div>
-  <div>
+
+  <div class="field">
     <label for="notes">Notes</label>
     <input type="text" id="notes" name="notes" required>
   </div>
-  <div>
+
+  <div class="field">
     <label for="category">Categories</label>
-    <input type="text" id="category" name="category" required>
+    <select multiple="" class="ui fluid dropdown" name="category" id="category">
+      <option value="">Please select one or more</option>
+      <option value="work">Work</option>
+      <option value="school">School</option>
+      <option value="fun">Fun</option>
+      <option value="social">Social</option>
+      <option value="gaming">Gaming</option>
+      <option value="interview">Interview</option>
+    </select>
   </div>
+
+  <button class="ui button" type="submit">Submit</button>
+  
 </form>
