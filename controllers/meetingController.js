@@ -1,22 +1,24 @@
 const db = require('../models')
 
-function getMeetings(req, res) {
-  let userId = req.session.passport.user;
+async function getMeetings(req, res) {
+  try {
+    const userId = req.session.passport.user;
 
-  db.user.findOne({
-    where: {
-      id: userId
-    }, include: [db.meeting]
-  }).then(user => {
-      db.meeting.findAll({
-        where: {
-          userId: userId
-        }, include: [db.category]
-      })
-        .then(foundMeetings => {
-          res.render('meetings/index', { user: user, meetings: foundMeetings })
-        })
+    const foundUser = await db.user.findOne({ where: 
+      { id: userId }, 
+      include: [db.meeting]
     })
+
+    const meetings = await db.meeting.findAll({ where: 
+      { userId }, 
+      include: [db.category]
+    })
+          
+    res.render('meetings/index', { user: foundUser, meetings })
+  } catch(err) {
+    console.log(err);
+    res.redirect('/')
+  }
 }
 
 function createMeeting(req, res) {
