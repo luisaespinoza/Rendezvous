@@ -22,7 +22,6 @@ async function getMeetings(req, res) {
 }
 
 async function createMeeting(req, res) {
-  
   try {
     const user = await db.user.findOne({ where: { id: req.session.passport.user }})
 
@@ -49,51 +48,54 @@ async function createMeeting(req, res) {
   }
 }
 
-function getMeetingInfo(req, res) {
-    db.meeting.findOne({
-    where: {
-      id: req.params.id
-    }, include: [db.category]
-  }).then(meeting => {
-    res.render('meetings/show', { meeting })
-  })
-}
-
-function updateMeeting(req, res) {
-   db.meeting.findOne({
-    where:
-      { id: req.params.id }
-  }).then(meeting => {
-    meeting.update({
-      url: req.body.url,
-      dateTime: req.body.dateTime,
-      private: req.body.private,
-      recurring: req.body.recurring,
-      passcode: req.body.passcode,
-      notes: req.body.notes,
-      provider: req.body.provider
-    }).then(() => {
-      db.meetingsCategories.destroy({
-        where: { meetingId: req.params.id }
-      }).then(() => {
-        db.meeting.findOne({ where: { id: req.params.id } }).then(meeting => {
-          db.category.findOrCreate({
-            where: { name: req.body.category }
-          }).then(([category, created]) => {
-              meeting.addCategory(category.dataValues.id).then(res.redirect("/"))
-          }).catch(error => console.log(error))
-        })
-      })
+async function getMeetingInfo(req, res) {
+  try {
+    const meeting = await db.meeting.findOne({ where: { id: req.params.id }, 
+      include: [db.category]
     })
-  })
+    res.render('meetings/show', { meeting })
+  } catch(err) {
+    console.log(err)
+  }
 }
 
-function deleteMeeting (req, res) {
-   db.meetingsCategories.destroy({
-    where: { meetingId: req.params.id }
-  }).then(() => {
-    db.meeting.destroy({ where: { id: req.params.id } })
-  }).then(res.redirect('/')).catch((error) => console.log(error))
+async function updateMeeting(req, res) {
+  try {
+    const meeting = await db.meeting.findOne({ where: { id: req.params.id }});
+
+    await meeting.update({
+    url: req.body.url,
+    dateTime: req.body.dateTime,
+    private: req.body.private,
+    recurring: req.body.recurring,
+    passcode: req.body.passcode,
+    notes: req.body.notes,
+    provider: req.body.provider
+  });
+
+    await db.meetingsCategories.destroy({ where: { meetingId: req.params.id }});
+    
+    const [category] = await db.category.findOrCreate({ where: { name: req.body.category }});
+    
+    await meeting.addCategory(category.dataValues.id);
+
+    res.redirect('/');
+
+  } catch(error) {
+
+    console.log(error)
+    
+  } 
+}
+
+async function deleteMeeting (req, res) {
+  try {
+    await db.meetingsCategories.destroy({ where: { meetingId: req.params.id }})
+    await db.meeting.destroy({ where: { id: req.params.id } })
+    res.redirect('/')
+  } catch(err) {
+    console.log(err)
+  }
 }
 
 module.exports = {
