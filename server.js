@@ -6,6 +6,9 @@ const flash = require("connect-flash")
 const passport = require('./config/ppConfig');
 const methodOverride = require('method-override');
 
+const authRouer = require('./routes/auth');
+const meetingRouter = require('./routes/meetings');
+const profileRouter = require('./routes/profile');
 
 const app = express();
 
@@ -47,9 +50,9 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-app.use('/auth', require('./routes/auth'));
-app.use('/meetings', require('./routes/meetings'))
-app.use('/profile', require('./routes/profile'))
+app.use('/auth', authRouer);
+app.use('/meetings', meetingRouter);
+app.use('/profile', profileRouter);
 
 var server = app.listen(process.env.PORT || 3000, ()=> console.log(`🎧You're listening to the smooth sounds of port ${process.env.PORT || 3000}🎧`));
 
