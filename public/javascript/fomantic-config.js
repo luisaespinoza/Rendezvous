@@ -13,9 +13,10 @@ $( document ).ready(function() {
     
     $( `.modal-toggle`).click(function(event){
       let id = "#meeting" + event.target.attributes.value.value
-      let caldendarId = "#calendar" + event.target.attributes.value.value
+      let calendarId = "#calendar" + event.target.attributes.value.value
+      console.log(calendarId)
       $(id).modal('show');
-      $(caldendarId).calendar();
+      $(calendarId).calendar();
       $('.ui.checkbox').checkbox();
       $('.selection.dropdown').dropdown();
     })
