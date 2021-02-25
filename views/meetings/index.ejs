@@ -44,14 +44,14 @@
           </a>
         </td>
         <td>
-          <button class="modal-toggle ui button primary" action="#" value="#edit-meeting<%= meeting.id %> ">Edit</button>
-          <div class="ui modal" id="edit-meeting<%= meeting.id %>">
+          <button class="modal-toggle ui button primary" action="#" value="<%= meeting.id %> ">Edit</button>
+          <div class="ui modal" id="meeting<%= meeting.id %>">
             <%-include("../partials/edit", {meeting:meeting}) %>
           </div>
         </td>
         <td>
-          <button class="modal-toggle ui button primary" action="#" value="#delete-meeting<%= meeting.id %> ">Delete</button>
-          <div class="ui mini modal" id="delete-meeting<%= meeting.id %>">
+          <button class="delete-toggle ui button primary" action="#" value="<%= meeting.id %> ">Delete</button>
+          <div class="ui mini modal" id="delete<%= meeting.id %>">
             <%-include("../partials/delete", {meeting:meeting}) %>
           </div>
         </td>
