@@ -5,7 +5,7 @@
     <% if (currentUser) { %>
       <a class="item" href="/profile">Profile</a>
       <a class="item" href="/meetings/index">Meetings</a>
-      <a class="item modal-toggle" href="#" value="#newMeeting">New Meeting</a>
+      <a class="item modal-toggle" href="#" value="New">New Meeting</a>
       <% } %>
   </div>
       
@@ -20,4 +20,4 @@
 </div>
 </header>
 
-<div class="ui modal" id="newMeeting"><%-include("./new")%></div>
+<div class="ui modal" id="meetingNew"><%-include("./new")%></div>

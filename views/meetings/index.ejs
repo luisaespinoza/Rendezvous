@@ -44,8 +44,8 @@
           </a>
         </td>
         <td>
-          <button class="modal-toggle ui button primary" action="#" value="#edit-meeting<%= meeting.id %> ">Edit</button>
-          <div class="ui modal" id="edit-meeting<%= meeting.id %>">
+          <button class="modal-toggle ui button primary" action="#" value="<%= meeting.id %> ">Edit</button>
+          <div class="ui modal" id="meeting<%= meeting.id %>">
             <%-include("../partials/edit", {meeting:meeting}) %>
           </div>
         </td>
