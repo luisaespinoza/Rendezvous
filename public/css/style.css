@@ -2,6 +2,18 @@
   padding: 20px 20px;
 }
 
-#newMeetingFormDiv label {
-  font-size: 11pt;
+#yourMeetingsDiv {
+  padding: 2.5% 5%;
+}
+
+#logInFormDiv,#signUpFormDiv {
+  padding-top: 15px;
+}
+
+#logInFormDiv label, #signUpFormDiv label, #newMeetingFormDiv label{
+  font-size: 11pt
+}
+
+.authHeader {
+  padding-top:2%
 }
