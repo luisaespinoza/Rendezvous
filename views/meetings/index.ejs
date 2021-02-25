@@ -6,12 +6,12 @@
 
   <thead>
     <tr>
+      <th>Title</th>
       <th>Provider</th>
       <th>Date</th>
       <th>Recurring</th>
       <th>Private</th>
       <th>Passcode</th>
-      <th>Notes</th>
       <th>URL</th>
       <th>Edit</th>
       <th>Delete</th>
@@ -20,6 +20,9 @@
   <tbody>
     <%meetings.forEach(meeting=> { %>
       <tr>
+        <td>
+          <%= meeting.dataValues.notes %>
+        </td>
         <td>
           <%= meeting.dataValues.provider %>
         </td>
@@ -34,9 +37,6 @@
         </td>
         <td>
           <%= meeting.dataValues.passcode %>
-        </td>
-        <td>
-          <%= meeting.dataValues.notes %>
         </td>
         <td>
           <a href="<%=meeting.dataValues.url%>" target="_blank">
@@ -54,14 +54,15 @@
       </tbody>
     <tfoot>
       <tr>
+        <th>Title</th>
         <th>Provider</th>
         <th>Date</th>
         <th>Recurring</th>
         <th>Private</th>
         <th>Passcode</th>
-        <th>Notes</th>
         <th>URL</th>
         <th>Edit</th>
+        <th>Delete</th>
       </tr>
     </tfoot>
   </table>

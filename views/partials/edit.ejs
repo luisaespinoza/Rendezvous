@@ -7,7 +7,7 @@
       <select class="ui selection dropdown" name="provider" id="provider">
         <option value="zoom">Zoom</option>
         <option value="hangouts">Google Hangouts</option>
-        <option value="skype">Skype</option>
+          <option value="skype">Skype</option>
         <option value="webex">Cisco Webex</option>
         <option value="joinme">Join.me</option>
       </select>
@@ -15,13 +15,13 @@
 
     <div class="field">
       <label for="url">Url</label>
-      <input type="url" id="url" name="url" required>
+      <input type="url" id="url" name="url" value="<%= meeting.url %> " required>
     </div>
 
     <div class="ui clearable multiple selection dropdown">
       <input type="hidden" name="category" id="category">
       <i class="dropdown icon"></i>
-      <div class="default text">Select Category</div>
+      <div class="default text" value="<%= meeting.category %> ">Select Category</div>
       <div class="menu">
         <div class="item">School</div>
         <div class="item">Work</div>
@@ -35,7 +35,7 @@
     <div class="ui calendar" id="standard_calendar">
       <div class="ui input left icon">
         <i class="calendar icon"></i>
-        <input type="text" placeholder="Date/Time" id="dateTime">
+        <input type="text" placeholder="Date/Time" id="dateTime" value="<%= meeting.dateTime %>">
       </div>
     </div>
 
@@ -56,7 +56,6 @@
         <option value="monthly">Mohthly</option>
       </select>
     </div>
-
     <div class="field">
       <label for="passcode">Passcode</label>
       <input type="text" id="passcode" name="passcode" required>
