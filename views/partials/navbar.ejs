@@ -1,11 +1,14 @@
 <header>
-<div class="ui small menu">
-  <% if (currentUser) { %>
-    <a class="item" href="/profile">Profile</a>
-    <a class="item" href="/meetings/index">Meetings</a>
-    <a class="item" href="#" id="newMeeting">New Meeting</a>
-   <% } %>
-  
+<div class="ui borderless mall menu">
+  <div class="left menu">
+    <h1 class="item"><strong>Rendezvous</strong></h1>
+    <% if (currentUser) { %>
+      <a class="item" href="/profile">Profile</a>
+      <a class="item" href="/meetings/index">Meetings</a>
+      <a class="item" href="#" id="newMeeting">New Meeting</a>
+      <% } %>
+  </div>
+      
   <div class="right menu">
     <% if (!currentUser) { %>
       <div class="item"><a href="/auth/signup"><div class="ui primary button">Sign Up</div></a></div>
