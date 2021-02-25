@@ -2,9 +2,9 @@
   <h1>Your Meetings
   </h1>
 
-  <table class="ui sortable celled table">
+  <table class="ui sortable celled table unstackable">
 
-  <thead>
+  <thead id="meetingsThead">
     <tr>
       <th>Title</th>
       <th>Provider</th>
@@ -18,7 +18,7 @@
     </tr>
   </thead>
   <tbody>
-    <%meetings.forEach(meeting=> { %>
+    <% meetings.forEach(meeting => { %>
       <tr>
         <td>
           <%= meeting.dataValues.notes %>
@@ -58,18 +58,5 @@
       </tr>
       <% });%>
       </tbody>
-    <tfoot>
-      <tr>
-        <th>Title</th>
-        <th>Provider</th>
-        <th>Date</th>
-        <th>Recurring</th>
-        <th>Private</th>
-        <th>Passcode</th>
-        <th>URL</th>
-        <th>Edit</th>
-        <th>Delete</th>
-      </tr>
-    </tfoot>
   </table>
 </div>
