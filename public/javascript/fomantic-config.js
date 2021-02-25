@@ -1,4 +1,5 @@
 $( document ).ready(function() {
+  $('.mini.modal').modal('show');
   $('table').tablesort();
   // $( `.modal-toggle`).click(function(){
   //   $('.ui.modal').modal('show');

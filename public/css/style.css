@@ -1,4 +1,4 @@
-#newMeetingFormDiv {
+#newMeetingFormDiv, #editFormDiv, #deleteFormDiv {
   padding: 20px 20px;
 }
 
@@ -10,7 +10,7 @@
   padding-top: 15px;
 }
 
-#logInFormDiv label, #signUpFormDiv label, #newMeetingFormDiv label{
+#logInFormDiv label, #signUpFormDiv label, #newMeetingFormDiv label, #editFormDiv label{
   font-size: 11pt
 }
 
