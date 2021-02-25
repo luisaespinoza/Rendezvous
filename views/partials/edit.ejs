@@ -1,15 +1,36 @@
 <div class="ui header center aligned">Edit Meeting</div>
 <div class="ui text container">
-  <form method="POST"action="/meetings/<%= meeting.id %>/edit/?_method=PUT" class="ui form">  
-    
+  <form method="POST" action="/meetings/<%= meeting.id %>/edit/?_method=PUT" class="ui form">
+
     <div class="field">
       <label for="provider">Provider</label>
       <select class="ui selection dropdown" name="provider" id="provider">
+
+        <% if (meeting.provider === "zoom") { %> 
+        <option value="zoom" selected>Zoom</option>
+        <% } else {  %> 
         <option value="zoom">Zoom</option>
+        <% } %> 
+        <% if (meeting.provider === "hangout") { %> 
+        <option value="hangouts" selected>Google Hangouts</option>
+        <% } else { %> 
         <option value="hangouts">Google Hangouts</option>
-          <option value="skype">Skype</option>
+        <% } %> 
+        <% if (meeting.provider === "skype") {%> 
+        <option value="skype" selected>Skype</option>
+        <% } else { %> 
+        <option value="skype">Skype</option>
+        <% } %> 
+        <% if (meeting.provider === "webex") { %> 
+        <option value="webex" selected>Cisco Webex</option>
+        <% } else { %> 
         <option value="webex">Cisco Webex</option>
+        <% } %> 
+        <% if (meeting.provider === "joinme")  {%> 
+        <option value="joinme" selected>Join.me</option>
+        <% } else { %> 
         <option value="joinme">Join.me</option>
+        <% } %> 
       </select>
     </div>
 
@@ -67,6 +88,6 @@
     </div>
 
     <button class="ui button" type="submit">Submit</button>
-    
+
   </form>
 </div>
