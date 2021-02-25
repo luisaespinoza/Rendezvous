@@ -44,7 +44,7 @@ function createMeeting(req, res) {
   })
 }
 
-function getMettingInfo(req, res) {
+function getMeetingInfo(req, res) {
     db.meeting.findOne({
     where: {
       id: req.params.id
@@ -95,6 +95,6 @@ module.exports = {
   createMeeting,
   deleteMeeting,
   getMeetings,
-  getMettingInfo,
+  getMeetingInfo,
   updateMeeting,
 }

@@ -11,7 +11,7 @@ router.get('/index', isLoggedIn, meetingController.getMeetings)
 router.post('/new', isLoggedIn, meetingController.createMeeting)
 
 //Get /meetings/:id
-router.get('/:id', isLoggedIn, meetingController.getMettingInfo)
+router.get('/:id', isLoggedIn, meetingController.getMeetingInfo)
 
 //Put /meetings/:id/edit
 router.put('/:id/edit', isLoggedIn, meetingController.updateMeeting)
