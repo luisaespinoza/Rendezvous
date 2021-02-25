@@ -4,7 +4,6 @@
 
   <table class="ui sortable celled table">
 
-<<<<<<< HEAD
   <thead>
     <tr>
       <th>Provider</th>
@@ -45,50 +44,14 @@
           </a>
         </td>
         <td>
-          <%-include("../partials/edit", {meeting:meeting}) %>
+          <button class="modal-toggle ui button primary" action="#" value="#edit-meeting<%= meeting.id %> ">Edit</button>
+          <div class="ui modal" id="edit-meeting<%= meeting.id %>">
+            <%-include("../partials/edit", {meeting:meeting}) %>
+          </div>
         </td>
-=======
-    <thead>
-      <tr>
-        <th>Provider</th>
-        <th>Date</th>
-        <th>Recurring</th>
-        <th>Private</th>
-        <th>Passcode</th>
-        <th>Notes</th>
-        <th>URL</th>
->>>>>>> submain
       </tr>
-    </thead>
-    <tbody>
-      <%meetings.forEach(meeting=> { %>
-        <tr>
-          <td>
-            <%= meeting.dataValues.provider %>
-          </td>
-          <td>
-            <%= meeting.dataValues.dateTime %>
-          </td>
-          <td>
-            <%= meeting.dataValues.recurring %>
-          </td>
-          <td>
-            <%= meeting.dataValues.private %>
-          </td>
-          <td>
-            <%= meeting.dataValues.passcode %>
-          </td>
-          <td>
-            <%= meeting.dataValues.notes %>
-          </td>
-          <td>
-            <a href="<%=meeting.dataValues.url%>" target="_blank">
-              <%= meeting.dataValues.url%>
-            </a>
-          </td>
-        </tr>
-        <% }); %>
-    </tbody>
+      <% });%>
+      </tbody>
     <tfoot>
       <tr>
         <th>Provider</th>
@@ -98,6 +61,7 @@
         <th>Passcode</th>
         <th>Notes</th>
         <th>URL</th>
+        <th>Edit</th>
       </tr>
     </tfoot>
   </table>
