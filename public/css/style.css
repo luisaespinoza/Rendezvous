@@ -14,6 +14,18 @@
   font-size: 11pt
 }
 
+#rendezvousIcon {
+  padding-left: 10px
+}
+
 .authHeader {
   padding-top:2%
+}
+
+.navButton {
+  font-size: 13pt;
+}
+
+#alerts {
+  margin-top: 20px;
 }
