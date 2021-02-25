@@ -65,8 +65,7 @@ router.get('/:id', isLoggedIn, (req, res) => {
 router.put('/:id/edit', isLoggedIn, (req, res) => {
   db.meeting.findOne({
     where:
-      { id: req.params.id },
-    include: [db.meeting]
+      { id: req.params.id }
   }).then(meeting => {
     meeting.update({
       url: req.body.url,
@@ -81,10 +80,10 @@ router.put('/:id/edit', isLoggedIn, (req, res) => {
         where: { meetingId: req.params.id }
       }).then(() => {
         db.meeting.findOne({ where: { id: req.params.id } }).then(meeting => {
-          db.category.findOne({
+          db.category.findOrCreate({
             where: { name: req.body.category }
-          }).then((category) => {
-            meeting.addCategory(category[0].id).then(res.redirect('/'))
+          }).then(([category,created]) => {
+              meeting.addCategory(category.dataValues.id).then(res.redirect("/"))
           }).catch(error => console.log(error))
         })
       })
