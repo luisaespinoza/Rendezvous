@@ -6,7 +6,7 @@ const flash = require("connect-flash")
 const passport = require('./config/ppConfig');
 const methodOverride = require('method-override');
 
-const authRouer = require('./routes/auth');
+const authRouter = require('./routes/auth');
 const meetingRouter = require('./routes/meetings');
 const profileRouter = require('./routes/profile');
 
@@ -50,7 +50,7 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-app.use('/auth', authRouer);
+app.use('/auth', authRouter);
 app.use('/meetings', meetingRouter);
 app.use('/profile', profileRouter);
 
