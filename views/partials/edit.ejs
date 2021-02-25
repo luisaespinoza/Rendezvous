@@ -11,7 +11,7 @@
       
       <div class="field">
         <label>Date & Time</label>
-        <div class="ui calendar" id="standard_calendar">
+        <div class="ui calendar" id="calendar<%= meeting.id %> ">
           <div class="ui input left icon">
             <i class="calendar icon"></i>
             <input type="text" placeholder="Date/Time" id="dateTime" name="dateTime" value="<%= meeting.dateTime %>">
@@ -104,18 +104,11 @@
 
     </div>
 
-<<<<<<< HEAD
-    <div class="ui calendar" id="calendar<%= meeting.id %> ">
-      <div class="ui input left icon">
-        <i class="calendar icon"></i>
-        <input type="text" placeholder="Date/Time" id="dateTime" " autocomplete="off">
-=======
     <div class="fields">
       
       <div class="four wide field">
         <label for="passcode">Passcode</label>
         <input type="text" id="passcode" name="passcode" value="<%= meeting.passcode %> ">
->>>>>>> submain
       </div>
     
       <div class="twelve wide field">

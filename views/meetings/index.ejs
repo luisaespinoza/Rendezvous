@@ -50,8 +50,8 @@
           </div>
         </td>
         <td>
-          <button class="modal-toggle ui button primary" action="#" value="#delete-meeting<%= meeting.id %> ">Delete</button>
-          <div class="ui mini modal" id="delete-meeting<%= meeting.id %>">
+          <button class="delete-toggle ui button primary" action="#" value="<%= meeting.id %> ">Delete</button>
+          <div class="ui mini modal" id="delete<%= meeting.id %>">
             <%-include("../partials/delete", {meeting:meeting}) %>
           </div>
         </td>
