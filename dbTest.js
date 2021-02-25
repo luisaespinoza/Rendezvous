@@ -153,3 +153,25 @@ const db = require("./models");
 
 
 // models.passport
+
+
+async function run() {
+
+  try {
+    const foundMeeting = await db.meeting.findOne({where:{id:1}});
+
+    const foundCategory = await db.category.findOne({where:{id:1}});
+
+    const foundUser = await db.user.findOne({where:{id:1}});
+
+    await foundMeeting.addCategory(foundCategory);
+
+    await foundUser.addMeeting(foundMeeting);
+    
+  } catch(err) {
+    console.log(err)
+  }
+
+}
+
+run();

@@ -1,11 +1,14 @@
 <header>
 <div class="ui borderless small menu">
   <div class="left menu">
-    <h1 class="item"><strong>Rendezvous</strong></h1>
+    <h1 class="item">
+      <strong>Rendezvous</strong>
+      <i class="angle double right icon" id="rendezvousIcon"></i>
+    </h1>
     <% if (currentUser) { %>
-      <a class="item" href="/profile">Profile</a>
-      <a class="item" href="/meetings/index">Meetings</a>
-      <a class="item modal-toggle" href="#" value="New">New Meeting</a>
+      <a class="item navButton" href="/profile">Profile</a>
+      <a class="item navButton" href="/meetings/index">Meetings</a>
+      <a class="item modal-toggle navButton" href="#" value="New">New Meeting</a>
       <% } %>
   </div>
       
