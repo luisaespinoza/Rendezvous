@@ -36,15 +36,6 @@ function signUpUser(req, res) {
   })
 }
 
-function logInUser(req, res) {
-    passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/auth/login',
-    successFlash: 'You have logged in!',
-    failureFlash: 'Invalid username and/or password.'
-  })
-}
-
 function logOutUser(req, res) {
   // .logout() is added to the req object by passport
   req.logout()
@@ -55,7 +46,6 @@ function logOutUser(req, res) {
 module.exports = {
   getLogInPage,
   getSignUpPage,
-  logInUser,
   logOutUser,
   signUpUser,
 }
