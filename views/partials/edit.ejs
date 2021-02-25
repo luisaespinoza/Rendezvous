@@ -62,7 +62,11 @@
 
     <div class="field">
       <div class="ui checkbox">
+        <% if (meeting.private === true) {%> 
+        <input type="checkbox" id="private" name="private" checked>
+        <% } else {%> 
         <input type="checkbox" id="private" name="private">
+        <% } %> 
         <label for="private">Private</label>
       </div>
     </div>
