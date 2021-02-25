@@ -18,7 +18,7 @@
   padding-left: 10px
 }
 
-.authHeader {
+.authHeader, #profileDiv, #indexDiv {
   padding-top:2%
 }
 
@@ -34,4 +34,22 @@
   position: sticky !important;
   top: 0;
   z-index: 2;
+}
+
+#deleteButton {
+  margin: 0;
+  padding: 10px;
+}
+
+#editButton {
+  margin: 0;
+  padding-top: 9px;
+  padding-right: 9px;
+  padding-bottom: 11px;
+  padding-left: 11px;
+}
+
+#deleteIcon, #editIcon {
+  margin:0;
+  padding: 0;
 }
