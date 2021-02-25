@@ -1,12 +1,24 @@
-<form action="/auth/signup" method="POST">
-  <label for="new-email">Email</label>
-  <input id="new-email" type="email" name="email" required>
+<div class="ui container authHeader">
+  <h2>Sign Up</h2>
+</div>
 
-  <label for="new-name">Name</label>
-  <input id="new-name" type="text" name="name">
+<div class="ui container" id="signUpFormDiv">
+<form class="ui form" action="/auth/signup" method="POST">
+  <div class="field">
+    <label for="new-email">Email</label>
+    <input id="new-email" type="email" name="email" required>
+  </div>
 
-  <label for="new-password">Password</label>
-  <input id="new-password" type="password" name="password" min="8">
+  <div class="field">
+    <label for="new-name">Name</label>
+    <input id="new-name" type="text" name="name">
+  </div>
 
-  <input type="submit" value="Sign up">
+  <div class="field">
+    <label for="new-password">Password</label>
+    <input id="new-password" type="password" name="password" min="8">
+  </div>
+
+  <input class="ui primary button" type="submit" value="Sign up">
 </form>
+</div>

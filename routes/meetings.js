@@ -1,72 +1,104 @@
 const express = require('express');
 const router = express.Router();
-const db = require("../models")
+const db = require('../models')
 const isLoggedIn = require('../middleware/isLoggedIn');
 
-
 //Get "/"
-router.get("/", isLoggedIn, (req, res) => {
-    let userId = req.session.passport.user;
-console.log(userId)
-    //db call for user's meetings
-    // db.user.findOne({
-    //         where:{
-    //             id: userId
-    //     }, include: [db.meeting]
-    // }
-    // ).then(user=>{
-    //     //console.log(user)
-    // res.render("user/index",{user:user})
-    // })
-  res.render("meetings/index")
+router.get('/index', isLoggedIn, (req, res) => {
+  let userId = req.session.passport.user;
+
+  db.user.findOne({
+    where: {
+      id: userId
+    }, include: [db.meeting]
+  })
+    .then(user => {
+      db.meeting.findAll({
+        where: {
+          userId: userId
+        }, include: [db.category]
+      })
+        .then(foundMeetings => {
+          res.render('meetings/index', { user: user, meetings: foundMeetings })
+        })
+    })
 })
 
-
 //Post "/meeting/new"
-router.post("/meeting/new", (req,res) => {
-  // db.meeting.create({
-  //   user: req.body.user,
-  //   url: req.body.url,
-  //   dateTime: req.body.dateTime,
-  //   // private is a boolean value
-  //   private: req.body.private,
-  //   // daily, weekly, or monthly
-  //   recurring: req.body.recurring,
-  //   passcode: req.body.passcode,
-  //   notes: req.body.notes,
-  //   provider: req.body.provider,
-  // })
-  // .then((meeting) => {
-  //   db.category.findOne({
-  //     where: {
-  //       name: req.body.category,
-  //     }
-  //   }).then((category) => {
-  //     db.meetingsCategories.create({
-  //       categoryId: category.id,
-  //       meetingId: meeting.id,
-  //     }).then((created) => {
-  //       res.redirect("/")
-  //     })
-  //   })
-  // })
-  // .catch((error) => {
-  //   console.log(error)
-  //   res.render(error)
-  // })
+router.post('/new', isLoggedIn, (req, res) => {
+  db.user.findOne({
+    where: { id: req.session.passport.user },
+  }).then(user => {
+    user.createMeeting({
+      url: req.body.url,
+      dateTime: req.body.dateTime,
+      private: req.body.private,
+      recurring: req.body.recurring,
+      passcode: req.body.passcode,
+      notes: req.body.notes,
+      provider: req.body.provider
+    }).then(createdMeeting => {
+      db.category.findOrCreate({
+        where: { name: req.body.category }
+      }).then((category) => {
+        createdMeeting.addCategory(category[0].id)
+      }).then(res.redirect('/'))
+    })
+  }).catch((error) => {
+    console.log(error)
+    res.render(error)
+  })
 })
 
 //Get "/meeting/:id"
-// router.get()
+router.get('/:id', isLoggedIn, (req, res) => {
+  db.meeting.findOne({
+    where: {
+      id: req.params.id
+    }, include: [db.category]
+  }).then(meeting => {
+    res.render('meetings/show', { meeting })
+  })
+})
+
 // //Put "/meeting/:id/edit"
-// router.put()
+router.put('/:id/edit', isLoggedIn, (req, res) => {
+  db.meeting.findOne({
+    where:
+      { id: req.params.id },
+    include: [db.meeting]
+  }).then(meeting => {
+    meeting.update({
+      url: req.body.url,
+      dateTime: req.body.dateTime,
+      private: req.body.private,
+      recurring: req.body.recurring,
+      passcode: req.body.passcode,
+      notes: req.body.notes,
+      provider: req.body.provider
+    }).then(() => {
+      db.meetingsCategories.destroy({
+        where: { meetingId: req.params.id }
+      }).then(() => {
+        db.meeting.findOne({ where: { id: req.params.id } }).then(meeting => {
+          db.category.findOne({
+            where: { name: req.body.category }
+          }).then((category) => {
+            meeting.addCategory(category[0].id).then(res.redirect('/'))
+          }).catch(error => console.log(error))
+        })
+      })
+    })
+  })
+})
+
 // //Delete "/meeting/:id"
-// router.delete()
-
-
-
-
-
-
+router.delete('/:id/delete', isLoggedIn, (req, res) => {
+  db.meetingsCategories.destroy({
+    where: { meetingId: req.params.id }
+  }).then(() => {
+    db.meeting.destroy({ where: { id: req.params.id } })
+  }).then(res.redirect('/')).catch((error) => console.log(error))
+})
 
 module.exports = router;

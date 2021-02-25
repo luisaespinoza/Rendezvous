@@ -1,4 +1,9 @@
 $( document ).ready(function() {
   $('table').tablesort();
-  $('#standard_calendar').calendar();
+  $('#newMeeting').click(function(){
+    $('.ui.modal').modal('show');
+    $('#standard_calendar').calendar();
+    $('.ui.checkbox').checkbox();
+    $('.selection.dropdown').dropdown();
+  })
 });

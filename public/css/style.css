@@ -1,5 +1,19 @@
-nav ul li {
-  text-decoration: none;
-  display: inline-block;
-  margin-right: .3em;
+#newMeetingFormDiv {
+  padding: 20px 20px;
+}
+
+#yourMeetingsDiv {
+  padding: 2.5% 5%;
+}
+
+#logInFormDiv,#signUpFormDiv {
+  padding-top: 15px;
+}
+
+#logInFormDiv label, #signUpFormDiv label, #newMeetingFormDiv label{
+  font-size: 11pt
+}
+
+.authHeader {
+  padding-top:2%
 }

@@ -1,16 +1,23 @@
 <header>
-  <nav>
-    <ul>
-      <% if (!currentUser) { %>
-        <li><a href="/auth/signup">Signup</a></li>
-        <li><a href="/auth/login">Login</a></li>
-        <% } else { %>
-          <li><a href="/auth/logout">Logout</a></li>
-          <li><a href="/profile">Profile</a></li>
-          <li><a href="/meetings/index">Meetings</a></li>
-          <li><a href="/meetings/new">New Meeting</a></li>
-          <% } %>
-       
-    </ul>
-  </nav>
+<div class="ui borderless mall menu">
+  <div class="left menu">
+    <h1 class="item"><strong>Rendezvous</strong></h1>
+    <% if (currentUser) { %>
+      <a class="item" href="/profile">Profile</a>
+      <a class="item" href="/meetings/index">Meetings</a>
+      <a class="item" href="#" id="newMeeting">New Meeting</a>
+      <% } %>
+  </div>
+      
+  <div class="right menu">
+    <% if (!currentUser) { %>
+      <div class="item"><a href="/auth/signup"><div class="ui primary button">Sign Up</div></a></div>
+      <div class="item"><a href="/auth/login"><div class="ui secondary button">Log In</div></a></div>
+    <% } else { %>
+      <div class="item"><a href="/auth/logout"><div class="ui primary button">Log Out</div></a></div>
+    <% } %>
+  </div>
+</div>
 </header>
+
+<div class="ui modal"><%-include("./new")%></div>

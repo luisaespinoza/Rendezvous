@@ -7,11 +7,11 @@ const db = require("./models");
 //     password: "jackjack",
 // }).then(createdUser=>{
 //     console.log(createdUser)
-// // })
+// })
 
 // db.user.findOne({
 //   where:
-//     { id: 1 }, include: [db.meeting]
+//     { id: 1 },
 // }).then(foundUser => {
 // foundUser.createMeeting({
 
@@ -23,10 +23,11 @@ const db = require("./models");
 //     notes: "BYOBacon",
 //     provider: "zoom"
 //   }).then(createdMeeting => {
-//     console.log(createdMeeting)
-//     console.log(foundUser,"+++++++++++++++++++++++++++++++++++")
-//     console.log(foundUser.meetings)
+//     db.category.findOrCreate({
+//         where: { name: 'work' }
+//       }).then((category) => { createdMeeting.addCategory(category[0].id)
 //   })
+// })
 // })
 
 // db.meeting.findOne({where:{id:1}}).then(foundMeeting=>{
@@ -66,3 +67,89 @@ const db = require("./models");
 //     })
 //   })
 // })
+
+
+// db.meeting.findOne({where:{id:1}}).then(foundMeeting=>{
+//     db.category.findOne({where:{id:1}}).then(foundCategory=>{
+//         db.user.findOne({where:{id:1}}).then(foundUser=>{
+//             foundMeeting.addCategory(foundCategory).then(relation=>{
+//                 foundUser.addMeeting(foundMeeting).then(rel=>{
+//                     console.log("winning")
+//                 })
+//             })
+
+//         })
+//     })
+// })
+
+// db.user.findOne({where:{id:1},include: [db.meeting]}).then(foundUser=>{
+//     console.log(foundUser,"++++++",foundUser.meetings)
+// })
+
+
+// db.user.findOne({
+//     where:
+//       { id: 1 },
+//   }).then(foundUser => {
+//   foundUser.createMeeting({
+  
+//       url: "https://www.google.com/",
+//       dateTime: new Date(),
+//       private: true,
+//       recurring: "monthly",
+//       passcode: "123",
+//       notes: "something",
+//       provider: "google"
+//     }).then(createdMeeting => {
+//       db.category.findOrCreate({
+//           where: { name: 'work' }
+//         }).then((category) => { createdMeeting.addCategory(category[0].id)
+//     })
+//   })
+//   })
+
+
+//   db.user.findOne({
+//     where:
+//       { id: 1 },
+//   }).then(foundUser => {
+//   foundUser.createMeeting({
+  
+//       url: "https://www.google.com/",
+//       dateTime: new Date(),
+//       private: true,
+//       recurring: "daily",
+//       passcode: "90",
+//       notes: "somethingelse",
+//       provider: "google"
+//     }).then(createdMeeting => {
+//       db.category.findOrCreate({
+//           where: { name: 'business' }
+//         }).then((category) => { createdMeeting.addCategory(category[0].id)
+//     })
+//   })
+//   })
+
+// db.user.findOne({
+//     where:
+//       { id: 1 },
+//   }).then(foundUser => {
+//   foundUser.createMeeting({
+  
+//       url: "https://www.microsoft.com/",
+//       dateTime: new Date(),
+//       private: false,
+//       recurring: "bimonthly",
+//       passcode: null,
+//       notes: "somethingelseTOO",
+//       provider: "adobe"
+//     }).then(createdMeeting => {
+//       db.category.findOrCreate({
+//           where: { name: 'games' }
+//         }).then((category) => { createdMeeting.addCategory(category[0].id)
+//     })
+//   })
+//   })
+
+
+// models.passport
