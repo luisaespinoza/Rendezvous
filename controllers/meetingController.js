@@ -21,11 +21,12 @@ async function getMeetings(req, res) {
   }
 }
 
-function createMeeting(req, res) {
-   db.user.findOne({
-    where: { id: req.session.passport.user },
-  }).then(user => {
-    user.createMeeting({
+async function createMeeting(req, res) {
+  
+  try {
+    const user = await db.user.findOne({ where: { id: req.session.passport.user }})
+
+    const newMeeting = await user.createMeeting({
       url: req.body.url,
       dateTime: req.body.dateTime,
       private: req.body.private,
@@ -33,17 +34,19 @@ function createMeeting(req, res) {
       passcode: req.body.passcode,
       notes: req.body.notes,
       provider: req.body.provider
-    }).then(createdMeeting => {
-      db.category.findOrCreate({
-        where: { name: req.body.category }
-      }).then((category) => {
-        createdMeeting.addCategory(category[0].id)
-      }).then(res.redirect('/'))
     })
-  }).catch((error) => {
+      
+    const newCategory = await db.category.findOrCreate({ where: 
+      { name: req.body.category }
+    })
+      
+    await newMeeting.addCategory(newCategory[0].id);
+    
+    res.redirect('/')
+  } catch(error) {
     console.log(error)
     res.render(error)
-  })
+  }
 }
 
 function getMeetingInfo(req, res) {
