@@ -35,12 +35,11 @@ $(document).ready(function () {
     $(id).modal('show');
     $(calendarId).calendar(
       {
-        initialDate: preSelectedDate,
+        eventClass: "green",
         eventDates: [
           {
-            date: preSelectedDate,
-            message: 'Previously selected Date/Time',
-            class: 'green'
+            date: new Date(preSelectedDate),
+            message: preSelectedDate
           }
         ]
       }
