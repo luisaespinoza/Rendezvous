@@ -74,11 +74,31 @@
     <div class="field">
       <label for="recurring">Recurring</label>
       <select class="ui selection dropdown" name="recurring" id="recurring">
+        <% if (meeting.recurring === null) {%> 
+        <option value=null selected>Not Recurring</option>
+        <%} else {  %> 
         <option value=null>Not Recurring</option>
+        <% }  %>
+        <% if (meeting.recurring === "daily") {%>
+          <option value="daily" selected>Daily</option>
+        <% } else { %>  
         <option value="daily">Daily</option>
-        <option value="weekly">Weekly</option>
-        <option value="biweekly">Biweekly</option>
+        <% }  %> 
+        <% if (meeting.recurring=== "weekly") {%>
+          <option value="weekly" selected>Weekly</option>  
+          <% } else {%> 
+            <option value="weekly">Weekly</option>
+            <% }  %>
+            <% if (meeting.recurring === "biweekly")  {%>  
+        <option value="biweekly" selected>Biweekly</option>
+        <% } else {  %>
+          <option value="biweekly">Biweekly</option>
+          <% } %>  
+          <% if (meeting.recurring === "monthly") {%> 
+        <option value="monthly" selected>Monthly</option>
+        <% } else { %> 
         <option value="monthly">Mohthly</option>
+        <% } %> 
       </select>
     </div>
     <div class="field">
