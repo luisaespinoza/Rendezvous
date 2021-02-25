@@ -1,21 +1,11 @@
-<div class="ui bottom aligned modal front transition visible active">
-  <div class="header">
-    
-    Delete Meeting
-  </div>
-  <div class="content">
-    <div class="ui text container">
-      <h1>Delete this meeting?</h1>
-    </div>
-  </div>
-      
-      
-      
-    <div class="ui hidden divider"></div>
-    <form method="POST"action="/meetings/<%= meeting.id %>/delete/?_method=DELETE" class="ui form">  
-    <div class="actions">
-        <button class="ui positive right labeled icon button" type="submit">Confirm</button>
-      </div>
-    </form>
+<div class="ui header center aligned">Delete Meeting</div>
+<div class="ui container" id="deleteFormDiv">
   
+  <div class="content"><h1>Delete this meeting?</h1></div>
+    
+  <div class="ui hidden divider"></div>
+  <form method="POST"action="/meetings/<%= meeting.id %>/delete/?_method=DELETE" class="ui form">  
+      <button class="ui positive button" type="submit">Confirm</button>
+  </form>
+
 </div>
