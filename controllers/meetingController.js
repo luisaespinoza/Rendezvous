@@ -47,7 +47,7 @@ async function createMeeting(req, res) {
       
     await newMeeting.addCategory(newCategory[0].id);
     
-    res.redirect('/')
+    res.redirect('/meetings/index')
   } catch(error) {
     console.log(error)
     res.render(error)
