@@ -90,7 +90,7 @@
         <div class="ui clearable selection dropdown">
           <input type="hidden" name="category" id="category">
           <i class="dropdown icon"></i>
-          <div class="default text" value="<%= meeting.category %>">Select A Category</div>
+          <div value="<%= meeting.dataValues.categories[0].dataValues.name %>"><%= meeting.dataValues.categories[0].dataValues.name %></div>
           <div class="menu">
             <div class="item">School</div>
             <div class="item">Work</div>

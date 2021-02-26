@@ -45,8 +45,8 @@ $(document).ready(function () {
   $('#inline_calendar').calendar({
     eventClass: "green",
     eventDates: meetings,
-    onSelect: function() {
-      return false;
+    onSelect: function(date, mode) {
+      if (mode === 'day') return false;
     }
   });
 });
