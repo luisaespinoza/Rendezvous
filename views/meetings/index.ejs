@@ -1,5 +1,5 @@
 <div id="yourMeetingsDiv">
-  <h1>Your Meetings</h1>
+  <h2>Your Meetings</h2>
 
   <table class="ui sortable celled table unstackable">
 
@@ -7,6 +7,7 @@
       <tr>
         <th>Title</th>
         <th>Provider</th>
+        <th>Category</th>
         <th>Date</th>
         <th>Recurring</th>
         <th>Private</th>
@@ -25,6 +26,9 @@
           </td>
           <td>
             <%= meeting.dataValues.provider%>
+          </td>
+          <td>
+            <%= meeting.dataValues.categories[0].dataValues.name %>
           </td>
           <td>
             <%= meeting.dataValues.dateTime %>

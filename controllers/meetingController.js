@@ -14,7 +14,6 @@ async function getMeetings(req, res) {
       { userId }, 
       include: [db.category]
     })
-    console.log(meetings.category)
 
     meetings.forEach((meeting) => {
       meeting.dataValues.dateTime = new Date(meeting.dataValues.dateTime)
@@ -60,6 +59,8 @@ async function getMeetingInfo(req, res) {
     const meeting = await db.meeting.findOne({ where: { id: req.params.id }, 
       include: [db.category]
     })
+
+
     res.render('meetings/show', { meeting })
   } catch(err) {
     console.log(err)
@@ -71,14 +72,14 @@ async function updateMeeting(req, res) {
     const meeting = await db.meeting.findOne({ where: { id: req.params.id }});
 
     await meeting.update({
-    url: req.body.url,
-    dateTime: req.body.dateTime,
-    private: req.body.private,
-    recurring: req.body.recurring,
-    passcode: req.body.passcode,
-    notes: req.body.notes,
-    provider: req.body.provider
-  });
+      url: req.body.url,
+      dateTime: req.body.dateTime,
+      private: req.body.private,
+      recurring: req.body.recurring,
+      passcode: req.body.passcode,
+      notes: req.body.notes,
+      provider: req.body.provider
+    });
 
     await db.meetingsCategories.destroy({ where: { meetingId: req.params.id }});
     
