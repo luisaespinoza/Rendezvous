@@ -78,3 +78,21 @@
   letter-spacing: 4px;
   padding-top: 35px;
 }
+
+div h2 {
+  font-family: 'Shippori Mincho', serif;
+  font-weight: 700;
+}
+
+.titleCase {
+  text-transform: capitalize
+}
+
+.longDash {
+  text-align: center;
+  letter-spacing: -1.5pt;
+}
+/* #editTd, #deleteTd {
+  display: flex;
+  justify-content: center;
+} */
