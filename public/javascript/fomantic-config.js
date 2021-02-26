@@ -62,17 +62,16 @@ $(document).ready(function () {
   })
   let meetings = []
   $('#userMeetings').children('div').each(function () {
-    console.log(this.value); // "this" is the current element in the loop
+    meetings.push({date: new Date(this.dataset.date), message: this.dataset.title})
+    // console.log(this.dataset.title,this.dataset.date); // "this" is the current element in the loop
   });
+  console.log(meetings)
 
   $('#inline_calendar')
   .calendar(
     {
       eventClass: "green",
-      eventDates: [ {
-        date: new Date(),
-        message: new Date(),
-      } ]
+      eventDates: meetings
     }
   )
 ;
