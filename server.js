@@ -8,7 +8,6 @@ const methodOverride = require('method-override');
 
 const authRouter = require('./routes/auth');
 const meetingRouter = require('./routes/meetings');
-const profileRouter = require('./routes/profile');
 
 const app = express();
 
@@ -52,7 +51,7 @@ app.get('/', (req, res) => {
 
 app.use('/auth', authRouter);
 app.use('/meetings', meetingRouter);
-app.use('/profile', profileRouter);
+
 
 var server = app.listen(process.env.PORT || 3000, ()=> console.log(`🎧You're listening to the smooth sounds of port ${process.env.PORT || 3000}🎧`));
 
