@@ -35,12 +35,11 @@ $(document).ready(function () {
     $(id).modal('show');
     $(calendarId).calendar(
       {
-        initialDate: preSelectedDate,
+        eventClass: "green",
         eventDates: [
           {
-            date: preSelectedDate,
-            message: 'Previously selected Date/Time',
-            class: 'green'
+            date: new Date(preSelectedDate),
+            message: preSelectedDate
           }
         ],
         formatter: {
@@ -61,5 +60,21 @@ $(document).ready(function () {
     let id = "#delete" + event.target.attributes.value.value
     $(id).modal('show');
   })
+  let meetings = []
+  $('#userMeetings').children('div').each(function () {
+    let time = this.dataset.date.substring(16,34)
+    meetings.push({date: new Date(this.dataset.date), message: this.dataset.title + " |\n" + time})
+    // console.log(this.dataset.title,this.dataset.date); // "this" is the current element in the loop
+  });
+  console.log(meetings)
+
+  $('#inline_calendar')
+  .calendar(
+    {
+      eventClass: "green",
+      eventDates: meetings 
+    }
+  )
+;
 
 });
