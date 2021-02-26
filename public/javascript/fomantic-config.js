@@ -20,7 +20,7 @@ $(document).ready(function () {
           date: function (date, settings) {
             if (!date) return '';
             var day = date.getDate();
-            var month = settings.text.months[date.getMonth()];
+            var month = date.getMonth();
             var year = date.getFullYear();
             return month + '/' + day + '/' + year;
           }
