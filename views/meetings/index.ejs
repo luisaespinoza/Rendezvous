@@ -1,5 +1,5 @@
 <div id="yourMeetingsDiv">
-  <h1>Your Meetings</h1>
+  <h2>Your Meetings</h2>
 
   <table class="ui sortable celled table unstackable">
 
@@ -7,6 +7,7 @@
       <tr>
         <th>Title</th>
         <th>Provider</th>
+        <th>Category</th>
         <th>Date</th>
         <th>Recurring</th>
         <th>Private</th>
@@ -23,33 +24,61 @@
           <td>
             <%= meeting.dataValues.notes %>
           </td>
-          <td>
-            <%= meeting.dataValues.provider %>
+          <td class="titleCase">
+            <% if (meeting.dataValues.provider == "hangouts") { %> 
+              google hangouts
+            <% } else if (meeting.dataValues.provider == "webex") { %>
+              cisco webex
+            <% } else if (meeting.dataValues.provider == "joinme") { %>
+              join.me
+            <% } else { %>
+              <%= meeting.dataValues.provider %>
+            <% } %> 
+            </td>
+          <td class="titleCase">
+            <% if (meeting.dataValues.categories[0].dataValues.name == "") {%> 
+              <span class="longDash">———</span>
+            <% } else { %> 
+              <%= meeting.dataValues.categories[0].dataValues.name %>
+            <% } %>
+
           </td>
           <td>
             <%= meeting.dataValues.dateTime %>
           </td>
-          <td>
-            <%= meeting.dataValues.recurring %>
+          <td class="titleCase">
+            <% if (meeting.dataValues.recurring == "null") { %>
+              <span class="longDash">———</span>
+            <% } else { %> 
+              <%= meeting.dataValues.recurring %>
+            <% } %> 
+          </td>
+          <td class="titleCase">
+            <% if (meeting.dataValues.private == true) { %>
+              private
+            <% } else { %> 
+              <span class="longDash">———</span>
+            <% } %> 
           </td>
           <td>
-            <%= meeting.dataValues.private %>
-          </td>
-          <td>
-            <%= meeting.dataValues.passcode %>
+            <% if (meeting.dataValues.passcode == "" || meeting.dataValues.passcode == " " || meeting.dataValues.passcode == null) { %>
+              <span class="longDash">———</span>
+            <% } else { %> 
+              <%= meeting.dataValues.passcode %>
+            <% } %> 
           </td>
           <td>
             <a href="<%=meeting.dataValues.url%>" target="_blank">
               <%= meeting.dataValues.url%>
             </a>
           </td>
-          <td>
+          <td class="center aligned">
             <button id="editButton" class="modal-toggle ui button primary" action="#" value="<%= meeting.id %> "><i id="editIcon" class="edit icon" value="<%= meeting.id %> "></i></button>
             <div class="ui modal" id="meeting<%= meeting.id %>">
               <%-include("../partials/edit", {meeting:meeting}) %>
             </div>
           </td>
-          <td>
+          <td class="center aligned">
             <button id="deleteButton" class="delete-toggle ui button primary" action="#" value="<%= meeting.id %> "><i id="deleteIcon" class="trash alternate icon" value="<%= meeting.id %> "></i></button>
             <div class="ui mini modal" id="delete<%= meeting.id %>">
               <%-include("../partials/delete", {meeting:meeting}) %>

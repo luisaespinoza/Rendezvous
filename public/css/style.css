@@ -2,7 +2,7 @@
   padding: 20px 20px;
 }
 
-#yourMeetingsDiv {
+#yourMeetingsDiv, #calendarDiv{
   padding: 2.5% 5%;
 }
 
@@ -18,15 +18,12 @@
   padding-left: 10px
 }
 
-.authHeader, #profileDiv, #indexDiv {
+.authHeader, #indexDiv {
   padding-top:2%
 }
 
 .left.menu .navButton {
   font-size: 13pt;
-  /* font-family: 'Shippori Mincho', serif;
-  font-weight: 600;
-  letter-spacing: 1px; */
 }
 
 #alerts {
@@ -77,4 +74,22 @@
   font-weight: 700;
   letter-spacing: 4px;
   padding-top: 35px;
+}
+
+div h2 {
+  font-family: 'Shippori Mincho', serif;
+  font-weight: 700;
+}
+
+.titleCase {
+  text-transform: capitalize
+}
+
+.longDash {
+  text-align: center;
+  letter-spacing: -1.5pt;
+}
+
+#icon {
+  margin-left: 20px;
 }

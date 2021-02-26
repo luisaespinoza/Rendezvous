@@ -1,4 +1,5 @@
 const db = require('../models')
+const moment = require('moment')
 
 async function getMeetings(req, res) {
   try {
@@ -12,6 +13,11 @@ async function getMeetings(req, res) {
     const meetings = await db.meeting.findAll({ where: 
       { userId }, 
       include: [db.category]
+    })
+
+    meetings.forEach((meeting) => {
+      meeting.dataValues.dateTime = new Date(meeting.dataValues.dateTime)
+      meeting.dataValues.dateTime = new moment(meeting.dataValues.dateTime).format('MM/D/YYYY h:mm a')
     })
           
     res.render('meetings/index', { user: foundUser, meetings })
@@ -53,6 +59,8 @@ async function getMeetingInfo(req, res) {
     const meeting = await db.meeting.findOne({ where: { id: req.params.id }, 
       include: [db.category]
     })
+
+
     res.render('meetings/show', { meeting })
   } catch(err) {
     console.log(err)
@@ -64,14 +72,14 @@ async function updateMeeting(req, res) {
     const meeting = await db.meeting.findOne({ where: { id: req.params.id }});
 
     await meeting.update({
-    url: req.body.url,
-    dateTime: req.body.dateTime,
-    private: req.body.private,
-    recurring: req.body.recurring,
-    passcode: req.body.passcode,
-    notes: req.body.notes,
-    provider: req.body.provider
-  });
+      url: req.body.url,
+      dateTime: req.body.dateTime,
+      private: req.body.private,
+      recurring: req.body.recurring,
+      passcode: req.body.passcode,
+      notes: req.body.notes,
+      provider: req.body.provider
+    });
 
     await db.meetingsCategories.destroy({ where: { meetingId: req.params.id }});
     
@@ -98,10 +106,23 @@ async function deleteMeeting (req, res) {
   }
 }
 
+async function getCalendar(req, res) {
+  const userMeetings = await db.meeting.findAll({ where: { userId: req.user.dataValues.id } })
+
+  userMeetings.forEach((meeting) => {
+    meeting.dataValues.dateTime = new Date(meeting.dataValues.dateTime)
+    meeting.dataValues.dateTime = new moment(meeting.dataValues.dateTime).format('MMMM/D/YYYY h:mm a')
+  })
+  // console.log(userMeetings)
+  // const meetings = await db.meetings.findAll({where: {id: }})
+  res.render('meetings/calendar', {userMeetings});
+}
+
 module.exports = {
   createMeeting,
   deleteMeeting,
   getMeetings,
   getMeetingInfo,
   updateMeeting,
+  getCalendar
 }

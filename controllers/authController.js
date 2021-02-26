@@ -21,7 +21,7 @@ function signUpUser(req, res) {
     if (created) {
       // success
       passport.authenticate('local', {
-        successRedirect: '/',
+        successRedirect: '/meetings/calendar',
         successFlash: 'Account created and user logged in!'
       })(req, res)
     } else {
