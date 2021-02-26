@@ -1,4 +1,4 @@
-#newMeetingFormDiv {
+#newMeetingFormDiv, #editFormDiv {
   padding: 20px 20px;
 }
 
@@ -10,10 +10,71 @@
   padding-top: 15px;
 }
 
-#logInFormDiv label, #signUpFormDiv label, #newMeetingFormDiv label{
+#logInFormDiv label, #signUpFormDiv label, #newMeetingFormDiv label, #editFormDiv label{
   font-size: 11pt
 }
 
-.authHeader {
+#rendezvousIcon {
+  padding-left: 10px
+}
+
+.authHeader, #profileDiv, #indexDiv {
   padding-top:2%
+}
+
+.left.menu .navButton {
+  font-size: 13pt;
+  /* font-family: 'Shippori Mincho', serif;
+  font-weight: 600;
+  letter-spacing: 1px; */
+}
+
+#alerts {
+  margin-top: 20px;
+}
+
+#meetingsThead {
+  position: sticky !important;
+  top: 0;
+  z-index: 2;
+}
+
+#deleteButton {
+  margin: 0;
+  padding: 10px;
+}
+
+#editButton {
+  margin: 0;
+  padding-top: 9px;
+  padding-right: 9px;
+  padding-bottom: 11px;
+  padding-left: 11px;
+}
+
+#deleteIcon, #editIcon {
+  margin:0;
+  padding: 0;
+}
+
+#deleteMeetingHeader {
+  font-size: 20pt;
+  text-align: center;
+}
+
+#deleteMeetingForm {
+  display: flex;
+  justify-content: center;
+}
+
+#deleteFormDiv {
+  padding: 30px 0px;
+  margin: 0px 0px;
+}
+
+#titleHeader {
+  font-family: 'Shippori Mincho', serif;
+  font-weight: 700;
+  letter-spacing: 4px;
+  padding-top: 35px;
 }

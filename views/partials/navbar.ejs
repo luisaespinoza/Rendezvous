@@ -1,11 +1,13 @@
 <header>
-<div class="ui borderless mall menu">
+<div class="ui borderless small menu stackable" id="menu">
   <div class="left menu">
-    <h1 class="item"><strong>Rendezvous</strong></h1>
+    <h1 class="item" id="titleHeader">
+      RENDEZVOUS >>
+    </h1>
     <% if (currentUser) { %>
-      <a class="item" href="/profile">Profile</a>
-      <a class="item" href="/meetings/index">Meetings</a>
-      <a class="item" href="#" id="newMeeting">New Meeting</a>
+      <a class="item navButton" href="/profile">Profile</a>
+      <a class="item navButton" href="/meetings/index">Meetings</a>
+      <a class="item modal-toggle navButton" href="#" value="New">New Meeting</a>
       <% } %>
   </div>
       
@@ -20,4 +22,4 @@
 </div>
 </header>
 
-<div class="ui modal"><%-include("./new")%></div>
+<div class="ui modal" id="meetingNew"><%-include("./new")%></div>

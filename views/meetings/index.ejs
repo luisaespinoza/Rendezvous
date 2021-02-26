@@ -1,23 +1,28 @@
 <div id="yourMeetingsDiv">
-  <h1>Your Meetings
-  </h1>
+  <h1>Your Meetings</h1>
 
-  <table class="ui sortable celled table">
+  <table class="ui sortable celled table unstackable">
 
-    <thead>
+    <thead id="meetingsThead">
       <tr>
+        <th>Title</th>
         <th>Provider</th>
         <th>Date</th>
         <th>Recurring</th>
         <th>Private</th>
         <th>Passcode</th>
-        <th>Notes</th>
         <th>URL</th>
+        <th>Edit</th>
+        <th>Delete</th>
       </tr>
     </thead>
+
     <tbody>
-      <%meetings.forEach(meeting=> { %>
+      <% meetings.forEach(meeting => { %>
         <tr>
+          <td>
+            <%= meeting.dataValues.notes %>
+          </td>
           <td>
             <%= meeting.dataValues.provider %>
           </td>
@@ -34,26 +39,26 @@
             <%= meeting.dataValues.passcode %>
           </td>
           <td>
-            <%= meeting.dataValues.notes %>
-          </td>
-          <td>
             <a href="<%=meeting.dataValues.url%>" target="_blank">
               <%= meeting.dataValues.url%>
             </a>
           </td>
+          <td>
+            <button id="editButton" class="modal-toggle ui button primary" action="#" value="<%= meeting.id %> "><i id="editIcon" class="edit icon" value="<%= meeting.id %> "></i></button>
+            <div class="ui modal" id="meeting<%= meeting.id %>">
+              <%-include("../partials/edit", {meeting:meeting}) %>
+            </div>
+          </td>
+          <td>
+            <button id="deleteButton" class="delete-toggle ui button primary" action="#" value="<%= meeting.id %> "><i id="deleteIcon" class="trash alternate icon" value="<%= meeting.id %> "></i></button>
+            <div class="ui mini modal" id="delete<%= meeting.id %>">
+              <%-include("../partials/delete", {meeting:meeting}) %>
+            </div>
+          </td>
         </tr>
-        <% }); %>
+      <% });%>
     </tbody>
-    <tfoot>
-      <tr>
-        <th>Provider</th>
-        <th>Date</th>
-        <th>Recurring</th>
-        <th>Private</th>
-        <th>Passcode</th>
-        <th>Notes</th>
-        <th>URL</th>
-      </tr>
-    </tfoot>
+
   </table>
+
 </div>

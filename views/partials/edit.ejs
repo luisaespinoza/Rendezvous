@@ -1,0 +1,135 @@
+<div class="ui header center aligned">Edit Meeting</div>
+<div class="ui container" id="editFormDiv">
+  <form method="POST" action="/meetings/<%= meeting.id %>/edit/?_method=PUT" class="ui form">
+    
+    <div class="field">
+      <label for="notes">Title</label>
+      <input type="text" id="notes" name="notes" value="<%= meeting.notes %> " required>
+    </div>
+
+    <div class="two fields">
+      
+      <div class="field">
+        <label>Date & Time</label>
+        <div class="ui calendar" id="calendar<%= meeting.id %>" value="<%= meeting.dateTime %>">
+          <div class="ui input left icon">
+            <i class="calendar icon"></i>
+            <input type="text" placeholder="Date/Time" id="dateTime" name="dateTime" autocomplete="off">
+          </div>
+        </div>
+      </div>
+      
+      <div class="field">
+        <label for="recurring">Recurring</label>
+        <select class="ui selection dropdown" name="recurring" id="recurring">
+          <% if (meeting.recurring === null) {%> 
+          <option value=null selected>Not Recurring</option>
+          <%} else {  %> 
+          <option value=null>Not Recurring</option>
+          <% }  %>
+          <% if (meeting.recurring === "daily") {%>
+            <option value="daily" selected>Daily</option>
+          <% } else { %>  
+          <option value="daily">Daily</option>
+          <% }  %> 
+          <% if (meeting.recurring=== "weekly") {%>
+            <option value="weekly" selected>Weekly</option>  
+            <% } else {%> 
+              <option value="weekly">Weekly</option>
+              <% }  %>
+              <% if (meeting.recurring === "biweekly")  {%>  
+          <option value="biweekly" selected>Biweekly</option>
+          <% } else {  %>
+            <option value="biweekly">Biweekly</option>
+            <% } %>  
+            <% if (meeting.recurring === "monthly") {%> 
+          <option value="monthly" selected>Monthly</option>
+          <% } else { %> 
+          <option value="monthly">Mohthly</option>
+          <% } %> 
+        </select>
+      </div>
+
+    </div>
+    
+    <div class="two fields">
+      <div class="field">
+        <label for="provider">Provider</label>
+        <select class="ui selection dropdown" name="provider" id="provider">
+
+          <% if (meeting.provider === "zoom") { %> 
+          <option value="zoom" selected>Zoom</option>
+          <% } else {  %> 
+          <option value="zoom">Zoom</option>
+          <% } %> 
+          <% if (meeting.provider === "hangout") { %> 
+          <option value="hangouts" selected>Google Hangouts</option>
+          <% } else { %> 
+          <option value="hangouts">Google Hangouts</option>
+          <% } %> 
+          <% if (meeting.provider === "skype") {%> 
+          <option value="skype" selected>Skype</option>
+          <% } else { %> 
+          <option value="skype">Skype</option>
+          <% } %> 
+          <% if (meeting.provider === "webex") { %> 
+          <option value="webex" selected>Cisco Webex</option>
+          <% } else { %> 
+          <option value="webex">Cisco Webex</option>
+          <% } %> 
+          <% if (meeting.provider === "joinme")  {%> 
+          <option value="joinme" selected>Join.me</option>
+          <% } else { %> 
+          <option value="joinme">Join.me</option>
+          <% } %> 
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="category">Categories</label>
+        <div class="ui clearable multiple selection dropdown">
+          <input type="hidden" name="category" id="category">
+          <i class="dropdown icon"></i>
+          <div class="default text" value="<%= meeting.category %> ">Select One or More Categories</div>
+          <div class="menu">
+            <div class="item">School</div>
+            <div class="item">Work</div>
+            <div class="item">Fun</div>
+            <div class="item">Social</div>
+            <div class="item">Gaming</div>
+            <div class="item">Interview</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="fields">
+      
+      <div class="four wide field">
+        <label for="passcode">Passcode</label>
+        <input type="text" id="passcode" name="passcode" value="<%= meeting.passcode %> ">
+      </div>
+    
+      <div class="twelve wide field">
+        <label for="url">URL</label>
+        <input type="url" id="url" name="url" value="<%= meeting.url %> " required>
+      </div>      
+    
+    </div>
+
+    <div class="field">
+      <div class="ui checkbox">
+        <% if (meeting.private === true) {%> 
+        <input type="checkbox" id="private" name="private" checked>
+        <% } else {%> 
+        <input type="checkbox" id="private" name="private">
+        <% } %> 
+        <label for="private">Private Meeting</label>
+      </div>
+    </div>
+  
+    <button class="ui button primary" type="submit">Submit</button>
+
+  </form>
+</div>

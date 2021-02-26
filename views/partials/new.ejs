@@ -11,10 +11,10 @@
       
       <div class="field">
         <label>Date & Time</label>
-        <div class="ui calendar" id="standard_calendar">
+        <div class="ui calendar" id="calendarNew">
           <div class="ui input left icon">
             <i class="calendar icon"></i>
-            <input type="text" placeholder="Date/Time" id="dateTime" name="dateTime">
+            <input type="text" placeholder="Date/Time" id="dateTime" name="dateTime" autocomplete="off">
           </div>
         </div>
       </div>
@@ -26,7 +26,7 @@
           <option value="daily">Daily</option>
           <option value="weekly">Weekly</option>
           <option value="biweekly">Biweekly</option>
-          <option value="monthly">Mohthly</option>
+          <option value="monthly">Monthly</option>
         </select>
       </div>
 
@@ -68,7 +68,7 @@
     
       <div class="four wide field">
         <label for="passcode">Passcode</label>
-        <input type="text" id="passcode" name="passcode" required>
+        <input type="text" id="passcode" name="passcode">
       </div>
 
       <div class="twelve wide field">
@@ -85,6 +85,6 @@
       </div>
     </div>
 
-    <button class="ui button primary" type="submit" id="newMeetingSubmit">Submit</button>
+    <button class="ui button primary" type="submit">Submit</button>
   </form>
 </div>

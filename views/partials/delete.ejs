@@ -1,0 +1,11 @@
+<div class="ui container" id="deleteFormDiv">
+  
+  <h1 id="deleteMeetingHeader">Delete this meeting?</h1>
+  
+  <div class="ui hidden divider"></div>
+  
+  <form method="POST"action="/meetings/<%= meeting.id %>/delete/?_method=DELETE" class="ui form" id="deleteMeetingForm">  
+      <button class="ui positive button" type="submit">Confirm</button>
+  </form>
+
+</div>
