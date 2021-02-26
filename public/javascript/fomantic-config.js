@@ -5,7 +5,7 @@ $(document).ready(function () {
     let id = "#meeting" + event.target.attributes.value.value
     let calendarId = "#calendar" + event.target.attributes.value.value
     let preSelectedDate = $(calendarId).attr("value")
-    
+
     $(id).modal('show');
     $(calendarId).calendar(
       {
@@ -30,10 +30,12 @@ $(document).ready(function () {
     $('.ui.checkbox').checkbox();
     $('.selection.dropdown').dropdown();
   })
+
   $(".delete-toggle").click(function (event) {
     let id = "#delete" + event.target.attributes.value.value
     $(id).modal('show');
   })
+
   let meetings = []
   $('#userMeetings').children('div').each(function () {
     let time = this.dataset.date.substring(16,34)
@@ -41,10 +43,10 @@ $(document).ready(function () {
   });
 
   $('#inline_calendar').calendar({
-      eventClass: "green",
-      eventDates: meetings,
-      onSelect: function() {
-        return false;
-      }
-    });
+    eventClass: "green",
+    eventDates: meetings,
+    onSelect: function() {
+      return false;
+    }
+  });
 });
