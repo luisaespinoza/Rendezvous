@@ -11,7 +11,7 @@ router.post('/signup', authController.signUpUser);
 router.get('/login', authController.getLogInPage);
 
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/',
+  successRedirect: '/meetings/calendar',
   failureRedirect: '/auth/login',
   successFlash: 'You have logged in!',
   failureFlash: 'Invalid username and/or password.'
