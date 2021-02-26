@@ -1,4 +1,4 @@
-#newMeetingFormDiv, #editFormDiv, #deleteFormDiv {
+#newMeetingFormDiv, #editFormDiv {
   padding: 20px 20px;
 }
 
@@ -52,4 +52,19 @@
 #deleteIcon, #editIcon {
   margin:0;
   padding: 0;
+}
+
+#deleteMeetingHeader {
+  font-size: 20pt;
+  text-align: center;
+}
+
+#deleteMeetingForm {
+  display: flex;
+  justify-content: center;
+}
+
+#deleteFormDiv {
+  padding: 30px 0px;
+  margin: 0px 0px;
 }
