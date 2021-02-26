@@ -87,7 +87,7 @@ async function updateMeeting(req, res) {
     
     await meeting.addCategory(category.dataValues.id);
 
-    res.redirect('/');
+    res.redirect('/meetings/index');
 
   } catch(error) {
 
