@@ -51,6 +51,10 @@ $(document).ready(function () {
     let id = "#delete" + event.target.attributes.value.value
     $(id).modal('show');
   })
+  let meetings = []
+  $('#userMeetings').children('div').each(function () {
+    console.log(this.value); // "this" is the current element in the loop
+  });
 
   $('#inline_calendar')
   .calendar(
