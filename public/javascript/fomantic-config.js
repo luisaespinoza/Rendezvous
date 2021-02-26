@@ -5,8 +5,7 @@ $(document).ready(function () {
     let id = "#meeting" + event.target.attributes.value.value
     let calendarId = "#calendar" + event.target.attributes.value.value
     let preSelectedDate = $(calendarId).attr("value")
-    console.log(preSelectedDate)
-    console.log(calendarId)
+    
     $(id).modal('show');
     $(calendarId).calendar(
       {
