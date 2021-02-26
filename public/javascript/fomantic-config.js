@@ -52,4 +52,16 @@ $(document).ready(function () {
     $(id).modal('show');
   })
 
+  $('#inline_calendar')
+  .calendar(
+    {
+      eventClass: "green",
+      eventDates: [ {
+        date: new Date(),
+        message: new Date(),
+      } ]
+    }
+  )
+;
+
 });
