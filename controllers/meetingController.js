@@ -1,4 +1,5 @@
 const db = require('../models')
+const moment = require('moment')
 
 async function getMeetings(req, res) {
   try {
@@ -12,6 +13,11 @@ async function getMeetings(req, res) {
     const meetings = await db.meeting.findAll({ where: 
       { userId }, 
       include: [db.category]
+    })
+
+    meetings.forEach((meeting) => {
+      meeting.dataValues.dateTime = new Date(meeting.dataValues.dateTime)
+      meeting.dataValues.dateTime = new moment(meeting.dataValues.dateTime).format('MMMM/D/YYYY h:mm a')
     })
           
     res.render('meetings/index', { user: foundUser, meetings })

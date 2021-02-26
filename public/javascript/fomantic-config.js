@@ -41,7 +41,16 @@ $(document).ready(function () {
             date: new Date(preSelectedDate),
             message: preSelectedDate
           }
-        ]
+        ],
+        formatter: {
+          date: function (date, settings) {
+            if (!date) return '';
+            var day = date.getDate();
+            var month = settings.text.months[date.getMonth()];
+            var year = date.getFullYear();
+            return month + '/' + day + '/' + year;
+          }
+        }
       }
     );
     $('.ui.checkbox').checkbox();
