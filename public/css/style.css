@@ -22,8 +22,11 @@
   padding-top:2%
 }
 
-.navButton {
+.left.menu .navButton {
   font-size: 13pt;
+  /* font-family: 'Shippori Mincho', serif;
+  font-weight: 600;
+  letter-spacing: 1px; */
 }
 
 #alerts {
@@ -67,4 +70,11 @@
 #deleteFormDiv {
   padding: 30px 0px;
   margin: 0px 0px;
+}
+
+#titleHeader {
+  font-family: 'Shippori Mincho', serif;
+  font-weight: 700;
+  letter-spacing: 4px;
+  padding-top: 35px;
 }
