@@ -14,6 +14,7 @@ async function getMeetings(req, res) {
       { userId }, 
       include: [db.category]
     })
+    console.log(meetings.category)
 
     meetings.forEach((meeting) => {
       meeting.dataValues.dateTime = new Date(meeting.dataValues.dateTime)
