@@ -7,6 +7,9 @@ const meetingController = require('../controllers/meetingController');
 //Get /meetings
 router.get('/index', isLoggedIn, meetingController.getMeetings)
 
+//Get /meetings/calendar
+router.get("/calendar",isLoggedIn, meetingController.getCalendar)
+
 //Post /meetings/new
 router.post('/new', isLoggedIn, meetingController.createMeeting)
 
@@ -18,5 +21,6 @@ router.put('/:id/edit', isLoggedIn, meetingController.updateMeeting)
 
 //Delete /meetings/:id
 router.delete('/:id/delete', isLoggedIn, meetingController.deleteMeeting)
+
 
 module.exports = router;
