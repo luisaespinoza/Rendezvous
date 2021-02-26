@@ -36,7 +36,12 @@
             <% } %> 
             </td>
           <td class="titleCase">
-            <%= meeting.dataValues.categories[0].dataValues.name %>
+            <% if (meeting.dataValues.categories[0].dataValues.name == "") {%> 
+              <span class="longDash">———</span>
+            <% } else { %> 
+              <%= meeting.dataValues.categories[0].dataValues.name %>
+            <% } %>
+
           </td>
           <td>
             <%= meeting.dataValues.dateTime %>
@@ -50,7 +55,7 @@
           </td>
           <td class="titleCase">
             <% if (meeting.dataValues.private == true) { %>
-              <%= meeting.dataValues.private %>
+              private
             <% } else { %> 
               <span class="longDash">———</span>
             <% } %> 
