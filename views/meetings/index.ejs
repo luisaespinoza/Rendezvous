@@ -56,12 +56,11 @@
             <% } %> 
           </td>
           <td>
-            <% if (meeting.dataValues.private == "") { %>
+            <% if (meeting.dataValues.passcode == "" || meeting.dataValues.passcode == " " || meeting.dataValues.passcode == null) { %>
               <span class="longDash">———</span>
             <% } else { %> 
-              <%= meeting.dataValues.private %>
+              <%= meeting.dataValues.passcode %>
             <% } %> 
-            <%=meeting.dataValues.passcode%>
           </td>
           <td>
             <a href="<%=meeting.dataValues.url%>" target="_blank">
