@@ -42,7 +42,16 @@ $(document).ready(function () {
             message: 'Previously selected Date/Time',
             class: 'green'
           }
-        ]
+        ],
+        formatter: {
+          date: function (date, settings) {
+            if (!date) return '';
+            var day = date.getDate();
+            var month = settings.text.months[date.getMonth()];
+            var year = date.getFullYear();
+            return month + '/' + day + '/' + year;
+          }
+        }
       }
     );
     $('.ui.checkbox').checkbox();
