@@ -1,11 +1,11 @@
 <div class="ui container" id="profileDiv">
-  <h2>Profile Page</h2>
+  <h2>Meetings Calendar</h2>
+<div>You have <%= userMeetings.length %> meetings.</div>
 
-<h3>Welcome to your PROFILE</h3>
+<h3>Meetings Calendar</h3>
 <div class="hidden" id="userMeetings">
   <% userMeetings.forEach(meeting => { %>
     <div data-title="<%= meeting.dataValues.notes %>" data-date="<%= meeting.dataValues.dateTime %>"></div>
-    <!-- <div id="meetingTitle<%= //meeting.dataValues.id %>" value="<%=// meeting.dataValues.notes %>"></div> -->
     <% }) %>
 </div>
 
