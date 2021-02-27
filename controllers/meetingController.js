@@ -17,7 +17,7 @@ async function getMeetings(req, res) {
 
     meetings.forEach((meeting) => {
       meeting.dataValues.dateTime = new Date(meeting.dataValues.dateTime)
-      meeting.dataValues.dateTime = new moment(meeting.dataValues.dateTime).format('MM/D/YYYY h:mm a')
+      meeting.dataValues.dateTime = new moment(meeting.dataValues.dateTime).format('M/D/YYYY h:mm a')
     })
           
     res.render('meetings/index', { user: foundUser, meetings })
