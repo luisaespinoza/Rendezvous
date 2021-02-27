@@ -17,7 +17,7 @@ async function getMeetings(req, res) {
 
     meetings.forEach((meeting) => {
       meeting.dataValues.dateTime = new Date(meeting.dataValues.dateTime)
-      meeting.dataValues.dateTime = new moment(meeting.dataValues.dateTime).format('MM/D/YYYY h:mm a')
+      meeting.dataValues.dateTime = new moment(meeting.dataValues.dateTime).format('M/D/YYYY h:mm a')
     })
           
     res.render('meetings/index', { user: foundUser, meetings })
@@ -47,7 +47,7 @@ async function createMeeting(req, res) {
       
     await newMeeting.addCategory(newCategory[0].id);
     
-    res.redirect('/')
+    res.redirect('/meetings/index')
   } catch(error) {
     console.log(error)
     res.render(error)
@@ -87,7 +87,7 @@ async function updateMeeting(req, res) {
     
     await meeting.addCategory(category.dataValues.id);
 
-    res.redirect('/');
+    res.redirect('/meetings/index');
 
   } catch(error) {
 
