@@ -38,7 +38,7 @@ $(document).ready(function () {
 
   let meetings = []
   $('#userMeetings').children('div').each(function () {
-    let time = this.dataset.date.substring(16,34)
+    let time = this.dataset.date.substring(this.dataset.date.length - 8)
     meetings.push({date: new Date(this.dataset.date), message: this.dataset.title + " |\n" + time})
   });
 
