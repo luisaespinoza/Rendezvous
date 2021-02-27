@@ -93,3 +93,34 @@ div h2 {
 #icon {
   margin-left: 20px;
 }
+
+#splash {
+  font-family: 'Shippori Mincho', serif;
+  font-weight: 600;
+  letter-spacing: 13px;
+  font-size: 50pt;
+  align-self: center;
+}
+
+#splashIcon {
+  font-size: 70pt;
+  align-self: center;
+}
+
+#indexDiv {
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  align-content: flex-end;
+}
+
+#indexFooter {
+  height: 12%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  align-content: flex-end;
+}
