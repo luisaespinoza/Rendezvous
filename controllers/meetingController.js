@@ -100,7 +100,7 @@ async function deleteMeeting (req, res) {
   try {
     await db.meetingsCategories.destroy({ where: { meetingId: req.params.id }})
     await db.meeting.destroy({ where: { id: req.params.id } })
-    res.redirect('/')
+    res.redirect('/meetings/index')
   } catch(err) {
     console.log(err)
   }
