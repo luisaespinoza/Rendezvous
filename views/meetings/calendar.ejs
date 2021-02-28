@@ -1,7 +1,12 @@
 <div id="calendarDiv">
   <h2>Meetings Calendar</h2>
-  <div>You have <%= userMeetings.length %> meetings.</div>
-  <h3></h3>
+  <div>You have <%= userMeetings.length %>
+    <% if(userMeetings.length !== 1 ){ %>
+      meetings.</div>
+    <% } else { %>  
+      meeting.</div>
+    <% } %>
+    <h3></h3>
   <div class="hidden" id="userMeetings">
     <% userMeetings.forEach(meeting => { %>
       <div data-title="<%= meeting.dataValues.notes %>" data-date="<%= meeting.dataValues.dateTime %>"></div>
