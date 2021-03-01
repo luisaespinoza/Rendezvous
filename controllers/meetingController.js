@@ -113,8 +113,7 @@ async function getCalendar(req, res) {
     meeting.dataValues.dateTime = new Date(meeting.dataValues.dateTime)
     meeting.dataValues.dateTime = new moment(meeting.dataValues.dateTime).format('MMMM/D/YYYY h:mm a')
   })
-  // console.log(userMeetings)
-  // const meetings = await db.meetings.findAll({where: {id: }})
+ 
   res.render('meetings/calendar', {userMeetings});
 }
 
