@@ -8,7 +8,7 @@ const meetingController = require('../controllers/meetingController');
 router.get('/index', isLoggedIn, meetingController.getMeetings)
 
 //Get /meetings/calendar
-router.get("/calendar",isLoggedIn, meetingController.getCalendar)
+router.get('/calendar',isLoggedIn, meetingController.getCalendar)
 
 //Post /meetings/new
 router.post('/new', isLoggedIn, meetingController.createMeeting)
