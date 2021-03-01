@@ -70,6 +70,9 @@
 				}
 
 				sortedMap.sort(function(a, b) {
+					if (moment(new Date(a.value)).isValid()) {
+						return self.settings.compare(new Date(a.value), new Date(b.value)) * direction;
+					}
 					return self.settings.compare(a.value, b.value) * direction;
 				});
 
