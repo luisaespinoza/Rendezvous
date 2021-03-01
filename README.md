@@ -1,8 +1,6 @@
 # Rendezvous
 
-Do you have some meetings saved in your browser bookmarks, archived in sms, and saved in your notes app? Rendezvous eliminates the need to have your meetings scattered in such disorganized fashion. With Rendezvous you can store all your meeting URLs regardless of provider, including date/time, and update, delete, or add new meetings to your user profile as often as necessary, we don’t judge. Rendezvous ensures that you will never lose that meeting URL again, “was it in my notes app? Or my bookmarks? Hint: It’s in Rendezvous.”
-
-[Rendezvous](https://rendezvous-organizer-app.herokuapp.com/)
+Do you have some meetings saved in your browser bookmarks, archived in sms, and saved in your notes app? Rendezvous eliminates the need to have your meetings scattered in such disorganized fashion. With Rendezvous you can store all your meeting URLs regardless of provider, including date/time, and update, delete, or add new meetings to your user profile as often as necessary, we don’t judge. Rendezvous ensures that you will never lose that meeting URL again, “was it in my notes app? Or my bookmarks? Hint: It’s in [Rendezvous](https://rendezvous-organizer-app.herokuapp.com/).”
 
 ## Technologies Used
 
